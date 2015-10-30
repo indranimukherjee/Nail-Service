@@ -1,0 +1,67 @@
+﻿@model nail_in_nottingham.Models.VisitorModel
+
+@{
+    ViewBag.Title = "Index";
+
+}
+
+@using (Html.BeginForm("Index", "visitors", FormMethod.Post))
+{
+    //this  is for create form tag
+    @Html.AntiForgeryToken()          // this is for prevent CSRF attack
+                                    @Html.ValidationSummary(true)
+    if (@ViewBag.Message != null)
+    {
+        <div style="border:1px solid red">
+            @ViewBag.Message
+        </div>
+    }
+    <div class="booking">
+        <div>
+            <fieldset>
+                <legend>Submit A Testimonial</legend>
+                <div class="lfname">
+                    @Html.LabelFor(Model => Model.visitor_name, "Your Name")
+                    @Html.EditorFor(Model => Model.visitor_name, new { @style = "margin-left: 185px; width:200px;"})
+                    @Html.ValidationMessageFor(Model => Model.visitor_name)
+                </div>
+
+
+                <div></div>
+                <div>
+                    @Html.LabelFor(Model => Model.visitor_location)
+                @Html.EditorFor(Model => Model.visitor_location, new { @style = "margin-left: 185px; width:200px;" })
+            </div>
+            @Html.ValidationMessageFor(Model => Model.visitor_location)
+
+
+            <div>
+                @Html.LabelFor(Model => Model.visitor_phoneno)
+            @Html.EditorFor(Model => Model.visitor_phoneno, new { @style = "margin-left: 185px; width:200px;", maxLength = 10 })
+            @Html.ValidationMessageFor(Model => Model.visitor_phoneno)
+
+
+        </div>
+
+        <div>
+            @Html.LabelFor(Model => Model.visitor_email)
+        @Html.EditorFor(Model => Model.visitor_email, new { @style = "margin-left: 185px; width:200px;" })
+        @Html.ValidationMessageFor(Model => Model.visitor_email)
+
+
+    </div>
+
+    <div>
+        @Html.LabelFor(Model => Model.visitor_comment_desc)
+
+        @Html.EditorFor(Model => Model.visitor_comment_desc, new { @style = "margin-left: 185px; width:200px;" })
+        @Html.ValidationMessageFor(Model => Model.visitor_comment_desc)
+
+
+    </div>
+
+</fieldset>
+</div>
+<input type="submit" value="SUBMIT TESTIMONIAL" />
+</div>
+}

@@ -1,0 +1,62 @@
+﻿@model nail_in_nottingham.Models.BookingModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<script type="text/javascript">
+  $(function() {
+      $("#service_id").change(function () {
+        $('#Form').submit();
+    });
+  });
+
+</script>
+
+@using (Html.BeginForm("Index", "bookings", FormMethod.Post, new { id = "Form" }))
+{
+    //this  is for create form tag
+    @Html.AntiForgeryToken()          // this is for prevent CSRF attack
+                                    @Html.ValidationSummary(true)
+    if (@ViewBag.Message != null)
+    {
+        <div style="border:1px solid red">
+            @ViewBag.Message
+        </div>
+    }
+<div class="booking">
+    <div>
+        <fieldset>
+            <legend>Your Personal Details</legend>
+            <div style="width: 500px;">
+                @Html.Label("First Name")
+                @Html.EditorFor(Model => Model.consumer_first_name, new { @style = "margin-left: 185px; width:200px;" })
+                @Html.ValidationMessageFor(Model => Model.consumer_first_name, "Please Insert First Name")
+            </div>
+       
+
+        <div></div>
+        <div>@Html.Label("Last Name") @Html.EditorFor(Model => Model.consumer_last_name, new { @style = "margin-left: 185px; width:200px;" }) </div>
+
+        <div>@Html.LabelFor(m => m.consumer__mobileno)
+            @Html.TextBoxFor(Model => Model.consumer__mobileno, new { type = "number", @*min = "0", max = "10"*@ })
+            @Html.ValidationMessageFor(m => m.consumer__mobileno)
+            </div>
+
+        <div>@Html.LabelFor(m => m.consumer_email)
+             @Html.EditorFor(Model => Model.consumer_email, new { @style = "margin-left: 227px ; width:199px;" }) </div>
+
+            <div>
+                @Html.Label("YOUR BOOKING DETAILS")
+                </div>
+                <div>
+                  @Html.LabelFor(m => m.service_id)
+                    @Html.DropDownListFor(m => m.service_id, new SelectList(Model.Servicelistmodel, "Value", "Text", new { @id = "ddlservice" }))
+                    @*@Html.DropDownList("ddlservice", Model.Servicelistmodel, new { @style = "margin-left: 185px; width:200px;" })*@
+                </div>
+
+</fieldset>
+</div>
+<input type="submit" value="BOOK NOW" />
+</div>
+}

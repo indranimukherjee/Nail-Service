@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="nail_serviceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="booking">
+          <Key>
+            <PropertyRef Name="booking_id" />
+          </Key>
+          <Property Name="booking_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="consumer_first_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="consumer_last_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="consumer__mobileno" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="consumer_email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="service_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="service_id" />
+          </Key>
+          <Property Name="service_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="service_type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="service_desc" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="visitor">
+          <Key>
+            <PropertyRef Name="vstr_id" />
+          </Key>
+          <Property Name="vstr_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="visitor_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="visitor_location" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="visitor_phoneno" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="visitor_email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="visitor_comment_desc" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_booking_Service">
+          <End Role="Service" Type="Self.Service" Multiplicity="1" />
+          <End Role="booking" Type="Self.booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="service_id" />
+            </Principal>
+            <Dependent Role="booking">
+              <PropertyRef Name="service_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="nail_serviceModelStoreContainer">
+          <EntitySet Name="booking" EntityType="Self.booking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="visitor" EntityType="Self.visitor" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_booking_Service" Association="Self.FK_booking_Service">
+            <End Role="Service" EntitySet="Service" />
+            <End Role="booking" EntitySet="booking" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="nail_serviceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="booking">
+          <Key>
+            <PropertyRef Name="booking_id" />
+          </Key>
+          <Property Name="booking_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="consumer_first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="consumer_last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="consumer__mobileno" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="consumer_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="service_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Service" Relationship="Self.FK_booking_Service" FromRole="booking" ToRole="Service" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="service_id" />
+          </Key>
+          <Property Name="service_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="service_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="service_desc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="bookings" Relationship="Self.FK_booking_Service" FromRole="Service" ToRole="booking" />
+        </EntityType>
+        <EntityType Name="visitor">
+          <Key>
+            <PropertyRef Name="vstr_id" />
+          </Key>
+          <Property Name="vstr_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="visitor_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="visitor_location" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="visitor_phoneno" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="visitor_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="visitor_comment_desc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_booking_Service">
+          <End Role="Service" Type="Self.Service" Multiplicity="1" />
+          <End Role="booking" Type="Self.booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="service_id" />
+            </Principal>
+            <Dependent Role="booking">
+              <PropertyRef Name="service_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="nail_serviceEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="bookings" EntityType="Self.booking" />
+          <EntitySet Name="Services" EntityType="Self.Service" />
+          <EntitySet Name="visitors" EntityType="Self.visitor" />
+          <AssociationSet Name="FK_booking_Service" Association="Self.FK_booking_Service">
+            <End Role="Service" EntitySet="Services" />
+            <End Role="booking" EntitySet="bookings" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="nail_serviceModelStoreContainer" CdmEntityContainer="nail_serviceEntities">
+          <EntitySetMapping Name="bookings">
+            <EntityTypeMapping TypeName="nail_serviceModel.booking">
+              <MappingFragment StoreEntitySet="booking">
+                <ScalarProperty Name="booking_id" ColumnName="booking_id" />
+                <ScalarProperty Name="consumer_first_name" ColumnName="consumer_first_name" />
+                <ScalarProperty Name="consumer_last_name" ColumnName="consumer_last_name" />
+                <ScalarProperty Name="consumer__mobileno" ColumnName="consumer__mobileno" />
+                <ScalarProperty Name="consumer_email" ColumnName="consumer_email" />
+                <ScalarProperty Name="service_id" ColumnName="service_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Services">
+            <EntityTypeMapping TypeName="nail_serviceModel.Service">
+              <MappingFragment StoreEntitySet="Service">
+                <ScalarProperty Name="service_id" ColumnName="service_id" />
+                <ScalarProperty Name="service_type" ColumnName="service_type" />
+                <ScalarProperty Name="service_desc" ColumnName="service_desc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="visitors">
+            <EntityTypeMapping TypeName="nail_serviceModel.visitor">
+              <MappingFragment StoreEntitySet="visitor">
+                <ScalarProperty Name="vstr_id" ColumnName="vstr_id" />
+                <ScalarProperty Name="visitor_name" ColumnName="visitor_name" />
+                <ScalarProperty Name="visitor_location" ColumnName="visitor_location" />
+                <ScalarProperty Name="visitor_phoneno" ColumnName="visitor_phoneno" />
+                <ScalarProperty Name="visitor_email" ColumnName="visitor_email" />
+                <ScalarProperty Name="visitor_comment_desc" ColumnName="visitor_comment_desc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

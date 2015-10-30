@@ -1,0 +1,58 @@
+﻿@model nail_in_nottingham.Models.visitor
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>visitor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.visitor_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.visitor_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.visitor_location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.visitor_location)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.visitor_phoneno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.visitor_phoneno)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.visitor_email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.visitor_email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.visitor_comment_desc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.visitor_comment_desc)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.vstr_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

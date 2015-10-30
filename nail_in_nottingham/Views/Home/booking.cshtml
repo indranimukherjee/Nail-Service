@@ -1,0 +1,31 @@
+﻿@model nail_in_nottingham.Models.booking
+@{
+    ViewBag.Title = "booking";
+    Layout = "~/Views/Shared/_mytemplate.cshtml";
+}
+
+
+<div class="booking">
+    <div>
+        <fieldset>
+            <legend>Your Personal Details</legend>
+            <div class="lfname">@Html.Label("First Name") 
+            @Html.Editor("txtfname") </div>
+            <div></div>
+            <div>@Html.Label("Last Name") @Html.Editor("txtlname") </div>
+      
+            <div>@Html.Label("Mobile") @Html.Editor("txtmno")</div>
+      
+            <div>@Html.Label("Email") @Html.Editor("txteml") </div>
+        
+            <div>@Html.Label("Service Type")
+            @*@Html.DropDownListFor(m => m.booking, new SelectList(Model, "Value", "Text", Model.service_id));*@
+            </div>
+
+        </fieldset>
+    </div>
+    <input type="submit" value="BOOK NOW" />
+</div>
+
+
+    @*@Html.DropDownList(a => a.service_id, (SelectList)ViewBag.ServiceType))*@

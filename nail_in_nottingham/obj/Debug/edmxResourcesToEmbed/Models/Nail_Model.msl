@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="nail_serviceModelStoreContainer" CdmEntityContainer="nail_serviceEntities1">
+    <EntitySetMapping Name="bookings">
+      <EntityTypeMapping TypeName="nail_serviceModel.booking">
+        <MappingFragment StoreEntitySet="booking">
+          <ScalarProperty Name="booking_id" ColumnName="booking_id" />
+          <ScalarProperty Name="consumer_first_name" ColumnName="consumer_first_name" />
+          <ScalarProperty Name="consumer_last_name" ColumnName="consumer_last_name" />
+          <ScalarProperty Name="consumer__mobileno" ColumnName="consumer__mobileno" />
+          <ScalarProperty Name="consumer_email" ColumnName="consumer_email" />
+          <ScalarProperty Name="service_id" ColumnName="service_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Services">
+      <EntityTypeMapping TypeName="nail_serviceModel.Service">
+        <MappingFragment StoreEntitySet="Service">
+          <ScalarProperty Name="service_id" ColumnName="service_id" />
+          <ScalarProperty Name="service_type" ColumnName="service_type" />
+          <ScalarProperty Name="service_desc" ColumnName="service_desc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="visitors">
+      <EntityTypeMapping TypeName="nail_serviceModel.visitor">
+        <MappingFragment StoreEntitySet="visitor">
+          <ScalarProperty Name="vstr_id" ColumnName="vstr_id" />
+          <ScalarProperty Name="visitor_name" ColumnName="visitor_name" />
+          <ScalarProperty Name="visitor_location" ColumnName="visitor_location" />
+          <ScalarProperty Name="visitor_phoneno" ColumnName="visitor_phoneno" />
+          <ScalarProperty Name="visitor_email" ColumnName="visitor_email" />
+          <ScalarProperty Name="visitor_comment_desc" ColumnName="visitor_comment_desc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
