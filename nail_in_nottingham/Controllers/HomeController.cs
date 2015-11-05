@@ -36,6 +36,13 @@ namespace nail_in_nottingham.Controllers
             return View();
         }
 
+        public ActionResult Service()
+        {
+            ViewBag.Message = "Your Service page.";
+
+            return View();
+        }
+
         public ActionResult Booking()
         {
 
