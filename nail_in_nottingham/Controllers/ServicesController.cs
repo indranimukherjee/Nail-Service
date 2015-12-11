@@ -18,8 +18,12 @@ namespace nail_in_nottingham.Controllers
         public ActionResult Index()
         {
             nail_serviceEntities db = new nail_serviceEntities();
-           
-            return View();
+
+            List<ServiceBillDesk> serviceDetails = db.ServiceBillDesks.Where(x => x.ServiceMaster.ParentServiceId > 0).ToList();
+
+           //var ser=db.ServiceBillDesks.Where(x => x.ServiceMaster.ParentServiceId>0).GroupBy(s => s.ServiceID).ToList();
+
+            return View(serviceDetails);
         }
         public ActionResult About()
         {

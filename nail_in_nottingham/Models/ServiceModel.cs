@@ -8,6 +8,6 @@ namespace nail_in_nottingham.Models
 {
     public class ServiceModel
     {
-        //public SelectList Servicelistmodel { get; set; }
+        public SelectList Servicelistmodel { get; set; }
     }
 }

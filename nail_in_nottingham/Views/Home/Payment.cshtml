@@ -4,5 +4,97 @@
     Layout = "~/Views/Shared/_mytemplate.cshtml";
 }
 
-@*<h2>Payment</h2>*@
+<head>
+    <script src="~/Content/mytemplate/js/snowstorm.js"></script>
+    <script src="~/Content/mytemplate/js/snowstorm-min.js"></script>
+
+    <script type="text/javascript" language="javascript">
+
+        snowStorm.snowColor = '#5CB3FF';
+        snowStorm.animationInterval = 20;
+        snowStorm.flakeBottom = null;
+        snowStorm.flakesMax = 200;
+        snowStorm.flakesMaxActive = 200;
+        snowStorm.followMouse = true;
+        snowStorm.snowStick = true;
+        snowStorm.snowCharacter = '*';
+        snowStorm.useTwinkleEffect = true;
+        snowStorm.snowflakeWidth = '200px';
+        snowStorm.snowflakeHeight = '200px';
+     //$(document).ready(function() {
+     //    snowStorm.snowColor = '#0000FF';   // blue-ish snow!?
+     //    snowStorm.flakesMaxActive = 96;    // show more snow on screen at once
+     //    snowStorm.useTwinkleEffect = true;
+     //    document.getElementById("offer-design").innerHTML;
+
+     //});
+    </script>
+</head>
+<body>
+    <div style="height:600px;">
+        <div class="offer" style="text-align:center;">
+            <h2 style="text-align:center;color:hotpink">OFFERS</h2>
+            <table border="1" style="width:48%;text-align:center;margin-left:10px;">
+                <tr>
+                    <td colspan="3" width="50%" style="color:hotpink;">Avail Flat 50% Off In February</td>
+                    @*<td>OFFERS</td>
+                        <td>OFFERS</td>*@
+                </tr>
+                <tr>
+                    <td height="100" width="200"><img src="~/Content/mytemplate/images/nail-caviar.jpg " height="100" width="200" alt="icon" /></td>
+                    <td><img src="~/Content/mytemplate/images/nail-wedding.png" height="100" width="200" alt="icon" /></td>
+                    @*<td><img src="~/Content/mytemplate/images/nail-caviar.jpg " height="100" width="200" alt="icon" /></td>*@
+                </tr>
+                <tr>
+                    <td><img src="~/Content/mytemplate/images/ServiceImages/ParaffinHandTreatment.jpg" height="100" width="200" alt="icon" /></td>
+                    <td><img src="~/Content/mytemplate/images/ServiceImages/ParaffinFootTreatment.jpg" height="100" width="200" alt="icon" /></td>
+                    @*<td><img src="~/Content/mytemplate/images/nail-caviar.jpg " height="100" width="200" alt="icon" /></td>*@
+                </tr>
+                <tr>
+                    <td><img src="~/Content/mytemplate/images/ServiceImages/AcrylicOverlays.jpg" height="100" width="200" alt="icon" /></td>
+                    <td><img src="~/Content/mytemplate/images/ServiceImages/FrenchInfill.jpg" height="100" width="200" alt="icon" /></td>
+                    @*<td><img src="~/Content/mytemplate/images/nail-caviar.jpg " height="100" width="200" alt="icon" /></td>*@
+                </tr>
+                <tr>
+                    <td><img src="~/Content/mytemplate/images/ServiceImages/GelManicure.jpg" height="100" width="200" alt="icon" /></td>
+                    <td><img src="~/Content/mytemplate/images/ServiceImages/Infills.jpg" height="100" width="200" alt="icon" /></td>
+                    @*<td><img src="~/Content/mytemplate/images/nail-caviar.jpg " height="100" width="200" alt="icon" /></td>*@
+                </tr>
+
+            </table>
+        </div>
+        <div class="giftcard" style="text-align:center;">
+            <h2 style="text-align:center; color:hotpink;">GIFTCARDS</h2>
+            <table border="1" style="width:48%; float:right;text-align:center;margin-right:10px;">
+                <tr>
+                    <td colspan="3" width="50%;" style="color:hotpink;"> BUY GIFT CARDS</td>
+                    @*<td>GIFT CARDS</td>
+                        <td>GIFT CARDS</td>*@
+                <tr>
+                    <td><img src="~/Content/mytemplate/images/gift1.jpg" height="100" width="200" alt="icon" /></td>
+                    <td><img src="~/Content/mytemplate/images/gift2.jpg" height="100" width="200" alt="icon" /></td>
+                    @*<td><img src="~/Content/mytemplate/images/gift3.jpg" height="100" width="200" alt="icon" /></td>*@
+                </tr>
+                <tr>
+                    <td><img src="~/Content/mytemplate/images/gift4.jpg" height="100" width="200" alt="icon" /></td>
+                    <td><img src="~/Content/mytemplate/images/gift5.jpg" height="100" width="200" alt="icon" /></td>
+                    @*<td><img src="~/Content/mytemplate/images/gift6.jpg" height="100" width="200" alt="icon" /></td>*@
+                <tr>
+                    <td><img src="~/Content/mytemplate/images/gift7.jpg" height="100" width="200" alt="icon" /></td>
+                    <td><img src="~/Content/mytemplate/images/gift8.jpg" height="100" width="200" alt="icon" /></td>
+                    @*<td><img src="~/Content/mytemplate/images/gift9.jpg" height="100" width="200" alt="icon" /></td>*@
+                </tr>
+                <tr>
+                    <td><img src="~/Content/mytemplate/images/gift10.jpg" height="100" width="200" alt="icon" /></td>
+                    <td><img src="~/Content/mytemplate/images/gift11.jpg" height="100" width="200" alt="icon" /></td>
+                    @*<td><img src="~/Content/mytemplate/images/gift12.jpg" height="100" width="200" alt="icon" /></td>*@
+                </tr>
+
+
+            </table>
+        </div>
+    </div>
+    <a href="#" class="back-to-top"><span style="color:white">BACK TO TOP</span></a>
+
+</body>
 

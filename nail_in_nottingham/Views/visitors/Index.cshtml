@@ -16,52 +16,258 @@
             @ViewBag.Message
         </div>
     }
-    <div class="booking">
-        <div>
-            <fieldset>
-                <legend>Submit A Testimonial</legend>
-                <div class="lfname">
-                    @Html.LabelFor(Model => Model.visitor_name, "Your Name")
-                    @Html.EditorFor(Model => Model.visitor_name, new { @style = "margin-left: 185px; width:200px;"})
-                    @Html.ValidationMessageFor(Model => Model.visitor_name)
-                </div>
+
+    <div class="contact_page">
+        <div class="address">
+            <h2 style="border-bottom:1px solid">Come Visit Us At Our Studio </h2>
+            <p style="font-family:sans-serif;font-size:10px;margin-top:10px;">
+                <strong>                   
+                    19 Trinity Walk <br /><br />
+
+                    Nottingham, Nottinghamshire<br /><br />
+
+                    NG1 2AN , United Kingdom<br /><br />
+                    0115 950 8932
+
+                </strong>
+            </p>
+        </div><br /><br />
+        <div id="map">
+            <h2>LOCATE US</h2>
 
 
-                <div></div>
-                <div>
-                    @Html.LabelFor(Model => Model.visitor_location)
-                @Html.EditorFor(Model => Model.visitor_location, new { @style = "margin-left: 185px; width:200px;" })
-            </div>
-            @Html.ValidationMessageFor(Model => Model.visitor_location)
-
-
+            <iframe width="400" height="170" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.co.uk/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=+WD6+1JN&amp;aq=&amp;sll=51.650932,-0.274843&amp;sspn=0.008095,0.021136&amp;ie=UTF8&amp;hq=&amp;hnear=Borehamwood+WD6+2FN,+United+Kingdom&amp;ll=51.650926,-0.274851&amp;spn=0.008095,0.021136&amp;t=m&amp;z=14&amp;output=embed"></iframe>
+        </div>
+        <div class="contact_us">
             <div>
-                @Html.LabelFor(Model => Model.visitor_phoneno)
-            @Html.EditorFor(Model => Model.visitor_phoneno, new { @style = "margin-left: 185px; width:200px;", maxLength = 10 })
-            @Html.ValidationMessageFor(Model => Model.visitor_phoneno)
+                <fieldset>
+                    <legend>Contact Form</legend>
+                    <table style="font-size:12px;">
+                        <tr>
+                            <td>
+                                Your Name:
+                            </td>
+                            <td>
+                                @*@Html.LabelFor(Model => Model.visitor_name, "Your Name")*@
+                                @Html.EditorFor(Model => Model.visitor_name, new { @style = "margin-left: 185px; width:200px;" })
+                                @Html.ValidationMessageFor(Model => Model.visitor_name)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Location:
+                            </td>
+                            <td>
+                                @*@Html.LabelFor(Model => Model.visitor_location)*@
+                                @Html.EditorFor(Model => Model.visitor_location, new { @style = "margin-left: 185px; width:200px;" })
+
+                                @Html.ValidationMessageFor(Model => Model.visitor_location)
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td> Phone Number:</td>
+                            <td>
+                                @*@Html.LabelFor(Model => Model.visitor_phoneno)*@
+                                @Html.EditorFor(Model => Model.visitor_phoneno, new { @style = "margin-left: 185px; width:200px;", maxLength = 10 })
+                                @Html.ValidationMessageFor(Model => Model.visitor_phoneno)
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+
+                                E-mail:
+                            </td>
+                            <td>
+                                @*@Html.LabelFor(Model => Model.visitor_email)*@
+                                @Html.EditorFor(Model => Model.visitor_email, new { @style = "margin-left: 185px; width:200px;" })
+                                @Html.ValidationMessageFor(Model => Model.visitor_email)
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Would you like to submit?
+                            </td>
+                            <td>
+                                <script src="~/Content/mytemplate/js/jquery.msgbox.i18n.js"></script>
+
+                                <script src="~/Content/mytemplate/js/jquery.msgbox.js"></script>
+                                @*<script type="text/javascript">
 
 
+
+                                    function ShowHideDiv() {
+                                    var chkYes = document.getElementById("chkYes");
+                                    var dvPassport = document.getElementById("dvPassport");
+                                    dvPassport.style.display = chkYes.checked ? "block" : "none";
+                                        }
+                                    </script>
+
+                                    <hr />*@
+
+                                @*<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>*@
+                                <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+                                <script type="text/javascript">
+                                    function showTestiEnqu(value) {
+                                        if (value == '1') {
+                                            $('#dvTestimonial').css('display', 'block');
+                                            $('#dvEnquiry').css('display', 'none');
+                                        }
+                                        else {
+                                            $('#dvEnquiry').css('display', 'block');
+                                            $('#dvTestimonial').css('display', 'none');
+                                        }
+                                    }
+
+                                </script>
+
+                                <p> @Html.RadioButton("testiEnqu", "1", new { onclick = "showTestiEnqu('1')" })Testimonial</p>
+                                <p>
+                                    @Html.RadioButton("testiEnqu", "2", new { onclick = "showTestiEnqu('2')" })Enquiry
+                                </p>
+
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td></td>
+                            <td>
+                                <div id="dvTestimonial" style="display:none ">
+                                    @Html.TextAreaFor(model => model.testimonials, new { placeholder = "Submit Your Testimonial here", Style = " margin-left: -147px;   height: 74px; width: 421px;" })
+                                </div>
+                                <div id="dvEnquiry" style="display:none;">
+                                    @Html.TextAreaFor(model => model.enquiry, new { placeholder = "Submit Your Enquiry Here", Style = " margin-left: -147px;   height: 74px; width: 421px;" })
+                                </div>
+                            </td>
+                        </tr>   
+                    </table>
+
+
+                </fieldset>
+            </div>
+            <div class="submit" style="margin-bottom:30px;margin-top:10px;">
+                <input type="image" img src="~/Content/mytemplate/images/submit-button.png" style="margin-left: 151px; margin-top: 27px; height: 23px; width: 164px;" />
+                <a href="#" class="back-to-top"><span style="color:white">BACK TO TOP</span></a>
+            </div>
         </div>
 
+    </div>
+
+    @*<div class="booking">
         <div>
-            @Html.LabelFor(Model => Model.visitor_email)
-        @Html.EditorFor(Model => Model.visitor_email, new { @style = "margin-left: 185px; width:200px;" })
-        @Html.ValidationMessageFor(Model => Model.visitor_email)
+            <fieldset>
+                <table>
+                    <tr>
+                        <td>
+                            Your Name:
+                        </td>
+                        <td>
+                            @Html.EditorFor(Model => Model.visitor_name, new { @style = "margin-left: 185px; width:200px;" })
+                            @Html.ValidationMessageFor(Model => Model.visitor_name)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Location:
+                        </td>
+                        <td>
+                            @Html.EditorFor(Model => Model.visitor_location, new { @style = "margin-left: 185px; width:200px;" })
+
+                            @Html.ValidationMessageFor(Model => Model.visitor_location)
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td> Phone Number:</td>
+                        <td>
+                            @Html.EditorFor(Model => Model.visitor_phoneno, new { @style = "margin-left: 185px; width:200px;", maxLength = 10 })
+                            @Html.ValidationMessageFor(Model => Model.visitor_phoneno)
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+
+                            E-mail:
+                        </td>
+                        <td>
+                            @Html.EditorFor(Model => Model.visitor_email, new { @style = "margin-left: 185px; width:200px;" })
+                            @Html.ValidationMessageFor(Model => Model.visitor_email)
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Would you like to submit?
+                        </td>
+                        <td>
+                            <script src="~/Content/mytemplate/js/jquery.msgbox.i18n.js"></script>
+
+                            <script src="~/Content/mytemplate/js/jquery.msgbox.js"></script>
+                            
+
+                          
+                            <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+                            <script type="text/javascript">
+                                function showTestiEnqu(value) {
+                                    if(value=='1')
+                                    {
+                                        $('#dvTestimonial').css('display', 'block');
+                                        $('#dvEnquiry').css('display', 'none');
+                                    }
+                                    else {
+                                        $('#dvEnquiry').css('display', 'block');
+                                        $('#dvTestimonial').css('display', 'none');
+                                    }
+                                }
+
+                            </script>
+
+                            <p> @Html.RadioButton("testiEnqu", "1", new { onclick = "showTestiEnqu('1')" })Testimonial</p>
+                            <p>
+                                @Html.RadioButton("testiEnqu", "2", new { onclick = "showTestiEnqu('2')" })Enquiry
+                            </p>
+
+                        </td>
+                    </tr>
 
 
-    </div>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <div id="dvTestimonial" style="display:none ">
+                                @Html.TextAreaFor(model => model.testimonials, new { placeholder = "Submit Your Testimonial here", Style = " margin-left: -164px;   height: 124px; width: 421px;" })
+                            </div>
+                            <div id="dvEnquiry" style="display:none;">
+                                @Html.TextAreaFor(model => model.enquiry, new { placeholder = "Submit Your Enquiry Here", Style= " margin-left: -164px;   height: 124px; width: 421px;" })
+                            </div>
+                        </td>
+                    </tr>   
+  
+                </table>
 
-    <div>
-        @Html.LabelFor(Model => Model.visitor_comment_desc)
 
-        @Html.EditorFor(Model => Model.visitor_comment_desc, new { @style = "margin-left: 185px; width:200px;" })
-        @Html.ValidationMessageFor(Model => Model.visitor_comment_desc)
+            </fieldset>
+        </div>
+        <div class="submit" style="margin-bottom:30px;margin-top:10px;">
+            <input type="submit" value="SUBMIT" style="margin-left: 150px; margin-top: 27px; height: 28px; width: 202px;" />
+            <a href="#" class="back-to-top"><span style="color:white">BACK TO TOP</span></a>
+        </div>
+    </div>*@
 
-
-    </div>
-
-</fieldset>
-</div>
-<input type="submit" value="SUBMIT TESTIMONIAL" />
-</div>
+  
+@*<div id="map">
+    <iframe width="400" height="170" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.co.uk/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=+WD6+1JN&amp;aq=&amp;sll=51.650932,-0.274843&amp;sspn=0.008095,0.021136&amp;ie=UTF8&amp;hq=&amp;hnear=Borehamwood+WD6+2FN,+United+Kingdom&amp;ll=51.650926,-0.274851&amp;spn=0.008095,0.021136&amp;t=m&amp;z=14&amp;output=embed"></iframe>
+</div>*@
 }

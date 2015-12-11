@@ -36,12 +36,12 @@ namespace nail_in_nottingham.Controllers
             return View();
         }
 
-        public ActionResult Service()
-        {
-            ViewBag.Message = "Your Service page.";
+        //public ActionResult Service()
+        //{
+        //    ViewBag.Message = "Your Service page.";
 
-            return View();
-        }
+        //    return View();
+        //}
 
         public ActionResult Booking()
         {
@@ -62,5 +62,10 @@ namespace nail_in_nottingham.Controllers
 
             return View();
         }
+        //public ActionResult Nail()
+        //{
+          
+        //    return View();
+        //}
     }
 }

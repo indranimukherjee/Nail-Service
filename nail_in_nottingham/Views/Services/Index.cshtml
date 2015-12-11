@@ -1,44 +1,329 @@
-﻿@model nail_in_nottingham.Models.ServiceModel
+﻿@model IEnumerable<nail_in_nottingham.Models.ServiceBillDesk>
 @{
-    ViewBag.Title = "service";
+    ViewBag.Title = "Services";
     Layout = "~/Views/Shared/_mytemplate.cshtml";
 }
 
 
+@{
+    var serviceDetailsList = (from s in Model
+                              group s by s.ServiceID into temp
+                              select new
+                              {
+                                  T1 = temp.Key.ToString(),
+                                  T2 = temp
+                              }).ToList();
+}
+@foreach (var item in serviceDetailsList)
+{
+
+    var divName = item.T2.ToList()[0].ServiceMaster.ServiceType.Replace(" ", "");
+                <div id=@divName class="divdesign">
+                    <div id="image" style="float:left;">
+
+                        <h3 style="margin-left: 330px;font-size: 20px; margin-top: 10px;margin-left: 380px;">@item.T2.ToList()[0].ServiceMaster.ServiceType.ToString()</h3>
+
+                 @*@switch (divName)
+                 {
+                     case "ValvetNailArt":
+                         string filepath;
+                         string fullpath;
+                         filepath = "../Content/mytemplate/images";
+                         fullpath = Path.Combine(filepath, "nlgrw.jpg");
+                        <img src=@fullpath height="190" width="344" alt="icon">
+                         break;
+
+                 }*@
+
+                             @{ string ImgPath = "../Content/mytemplate/images/ServiceImages/" + divName + ".jpg";}
+
+                             <img src=@ImgPath height="190" width="344" margin-left="277" alt="icon">         
+                        
+                        <br><br>
+
+                    </div>
 
 
 
+           @*<div id="texts" style="float:left;">
 
-@*<h2>Index</h2>
+            @switch (divName)
+            {
+                
+                case "ValvetNailArt":
+                    <p>          Being good to your hands and nails is about having good daily habits and
+                                choosing the right products to use on them. A few small changes could make
+                                a difference in how your hands and nails look and feel.
+                                WebMD asked dermatologists Jeffrey Dover, MD, associate clinical professor
+                                of dermatology at the Yale School of Medicine, and Heather Woolery-Lloyd, MD,
+                                assistant professor of dermatology at the University of Miami Miller School of
+                                Medicine, for guidance in knowing what's good for your hands. </p>
+                    break;
+                case "CavierNailArt":
+                    <p> Being good to your hands and nails is about having good daily habits and
+                                choosing the right products to use on them. A few small changes could make
+                                a difference in how your hands and nails look and feel.
+                                WebMD asked dermatologists Jeffrey Dover, MD, associate clinical professor
+                                of dermatology at the Yale School of Medicine, and Heather Woolery-Lloyd, MD,
+                                assistant professor of dermatology at the University of Miami Miller School of
+                                Medicine, for guidance in knowing what's good for your hands.</p>
+                    break;
+                case "NeonNailArt":
+                    <p> Being good to your hands and nails is about having good daily habits and
+                                choosing the right products to use on them. A few small changes could make
+                                a difference in how your hands and nails look and feel.
+                                WebMD asked dermatologists Jeffrey Dover, MD, associate clinical professor
+                                of dermatology at the Yale School of Medicine, and Heather Woolery-Lloyd, MD,
+                                assistant professor of dermatology at the University of Miami Miller School of
+                                Medicine, for guidance in knowing what's good for your hands. </p>
+                    break;
+                case "CrackleNailArt":
+                    <p> Being good to your hands and nails is about having good daily habits and
+                                choosing the right products to use on them. A few small changes could make
+                                a difference in how your hands and nails look and feel.
+                                WebMD asked dermatologists Jeffrey Dover, MD, associate clinical professor
+                                of dermatology at the Yale School of Medicine, and Heather Woolery-Lloyd, MD,
+                                assistant professor of dermatology at the University of Miami Miller School of
+                                Medicine, for guidance in knowing what's good for your hands. </p>
+                    break;
+                case "GlitterNailArt":
+                    <p> Being good to your hands and nails is about having good daily habits and
+                                choosing the right products to use on them. A few small changes could make
+                                a difference in how your hands and nails look and feel.
+                                WebMD asked dermatologists Jeffrey Dover, MD, associate clinical professor
+                                of dermatology at the Yale School of Medicine, and Heather Woolery-Lloyd, MD,
+                                assistant professor of dermatology at the University of Miami Miller School of
+                                Medicine, for guidance in knowing what's good for your hands. </p>
+                    break;
+                case "BeadsNailArt":
+                    <p> Being good to your hands and nails is about having good daily habits and
+                                choosing the right products to use on them. A few small changes could make
+                                a difference in how your hands and nails look and feel.
+                                WebMD asked dermatologists Jeffrey Dover, MD, associate clinical professor
+                                of dermatology at the Yale School of Medicine, and Heather Woolery-Lloyd, MD,
+                                assistant professor of dermatology at the University of Miami Miller School of
+                                Medicine, for guidance in knowing what's good for your hands. </p>
+                    break;
+                case "WeddingNailArt":
+                    <p> Being good to your hands and nails is about having good daily habits and
+                                choosing the right products to use on them. A few small changes could make
+                                a difference in how your hands and nails look and feel.
+                                WebMD asked dermatologists Jeffrey Dover, MD, associate clinical professor
+                                of dermatology at the Yale School of Medicine, and Heather Woolery-Lloyd, MD,
+                                assistant professor of dermatology at the University of Miami Miller School of
+                                Medicine, for guidance in knowing what's good for your hands. </p>
+                    break;
+                case "MountainNailArt":
+                    <p> Being good to your hands and nails is about having good daily habits and
+                                choosing the right products to use on them. A few small changes could make
+                                a difference in how your hands and nails look and feel.
+                                WebMD asked dermatologists Jeffrey Dover, MD, associate clinical professor
+                                of dermatology at the Yale School of Medicine, and Heather Woolery-Lloyd, MD,
+                                assistant professor of dermatology at the University of Miami Miller School of
+                                Medicine, for guidance in knowing what's good for your hands. </p>
+                    break;
+                case "Soakoff":
+                    <p> Being good to your hands and nails is about having good daily habits and
+                                choosing the right products to use on them. A few small changes could make
+                                a difference in how your hands and nails look and feel.
+                                WebMD asked dermatologists Jeffrey Dover, MD, associate clinical professor
+                                of dermatology at the Yale School of Medicine, and Heather Woolery-Lloyd, MD,
+                                assistant professor of dermatology at the University of Miami Miller School of
+                                Medicine, for guidance in knowing what's good for your hands. </p>
+                    break;
+                case "NailOverlaysRegular":
+                    <p> Being good to your hands and nails is about having good daily habits and
+                                choosing the right products to use on them. A few small changes could make
+                                a difference in how your hands and nails look and feel.
+                                WebMD asked dermatologists Jeffrey Dover, MD, associate clinical professor
+                                of dermatology at the Yale School of Medicine, and Heather Woolery-Lloyd, MD,
+                                assistant professor of dermatology at the University of Miami Miller School of
+                                Medicine, for guidance in knowing what's good for your hands. </p>
+                    break;
+                case "GelOverlays":
+                    <p> Being good to your hands and nails is about having good daily habits and
+                                choosing the right products to use on them. A few small changes could make
+                                a difference in how your hands and nails look and feel.
+                                WebMD asked dermatologists Jeffrey Dover, MD, associate clinical professor
+                                of dermatology at the Yale School of Medicine, and Heather Woolery-Lloyd, MD,
+                                assistant professor of dermatology at the University of Miami Miller School of
+                                Medicine, for guidance in knowing what's good for your hands. </p>
+                    break;
+                case "AcrylicOverlays":
+                    <p> Being good to your hands and nails is about having good daily habits and
+                                choosing the right products to use on them. A few small changes could make
+                                a difference in how your hands and nails look and feel.
+                                WebMD asked dermatologists Jeffrey Dover, MD, associate clinical professor
+                                of dermatology at the Yale School of Medicine, and Heather Woolery-Lloyd, MD,
+                                assistant professor of dermatology at the University of Miami Miller School of
+                                Medicine, for guidance in knowing what's good for your hands. </p>
+                    break;
+                case "Infills":
+                    <p> Being good to your hands and nails is about having good daily habits and
+                                choosing the right products to use on them. A few small changes could make
+                                a difference in how your hands and nails look and feel.
+                                WebMD asked dermatologists Jeffrey Dover, MD, associate clinical professor
+                                of dermatology at the Yale School of Medicine, and Heather Woolery-Lloyd, MD,
+                                assistant professor of dermatology at the University of Miami Miller School of
+                                Medicine, for guidance in knowing what's good for your hands. </p>
+                    break;
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.service_type)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.service_desc)
-        </th>
-        <th></th>
-    </tr>
+                case "FrenchInfill":
+                    <p> Being good to your hands and nails is about having good daily habits and
+                                choosing the right products to use on them. A few small changes could make
+                                a difference in how your hands and nails look and feel.
+                                WebMD asked dermatologists Jeffrey Dover, MD, associate clinical professor
+                                of dermatology at the Yale School of Medicine, and Heather Woolery-Lloyd, MD,
+                                assistant professor of dermatology at the University of Miami Miller School of
+                                Medicine, for guidance in knowing what's good for your hands. </p>
+                    break;
+                case "Manicure(Basic)":
+                    <p> Being good to your hands and nails is about having good daily habits and
+                                choosing the right products to use on them. A few small changes could make
+                                a difference in how your hands and nails look and feel.
+                                WebMD asked dermatologists Jeffrey Dover, MD, associate clinical professor
+                                of dermatology at the Yale School of Medicine, and Heather Woolery-Lloyd, MD,
+                                assistant professor of dermatology at the University of Miami Miller School of
+                                Medicine, for guidance in knowing what's good for your hands. </p>
+                    break;
+                case "FrenchManicure":
+                    <p> Being good to your hands and nails is about having good daily habits and
+                                choosing the right products to use on them. A few small changes could make
+                                a difference in how your hands and nails look and feel.
+                                WebMD asked dermatologists Jeffrey Dover, MD, associate clinical professor
+                                of dermatology at the Yale School of Medicine, and Heather Woolery-Lloyd, MD,
+                                assistant professor of dermatology at the University of Miami Miller School of
+                                Medicine, for guidance in knowing what's good for your hands. </p>
+                    break;
+                case "ReverseFrenchManicure":
+                    <p> Being good to your hands and nails is about having good daily habits and
+                                choosing the right products to use on them. A few small changes could make
+                                a difference in how your hands and nails look and feel.
+                                WebMD asked dermatologists Jeffrey Dover, MD, associate clinical professor
+                                of dermatology at the Yale School of Medicine, and Heather Woolery-Lloyd, MD,
+                                assistant professor of dermatology at the University of Miami Miller School of
+                                Medicine, for guidance in knowing what's good for your hands. </p>
+                    break;
+                case "AmericanManicure":
+                    <p> Being good to your hands and nails is about having good daily habits and
+                                choosing the right products to use on them. A few small changes could make
+                                a difference in how your hands and nails look and feel.
+                                WebMD asked dermatologists Jeffrey Dover, MD, associate clinical professor
+                                of dermatology at the Yale School of Medicine, and Heather Woolery-Lloyd, MD,
+                                assistant professor of dermatology at the University of Miami Miller School of
+                                Medicine, for guidance in knowing what's good for your hands. </p>
+                    break;
+                case "GelManicure":
+                    <p> Being good to your hands and nails is about having good daily habits and
+                                choosing the right products to use on them. A few small changes could make
+                                a difference in how your hands and nails look and feel.
+                                WebMD asked dermatologists Jeffrey Dover, MD, associate clinical professor
+                                of dermatology at the Yale School of Medicine, and Heather Woolery-Lloyd, MD,
+                                assistant professor of dermatology at the University of Miami Miller School of
+                                Medicine, for guidance in knowing what's good for your hands. </p>
+                    break;
+                case "HotstoneManicure":
+                    <p> Being good to your hands and nails is about having good daily habits and
+                                choosing the right products to use on them. A few small changes could make
+                                a difference in how your hands and nails look and feel.
+                                WebMD asked dermatologists Jeffrey Dover, MD, associate clinical professor
+                                of dermatology at the Yale School of Medicine, and Heather Woolery-Lloyd, MD,
+                                assistant professor of dermatology at the University of Miami Miller School of
+                                Medicine, for guidance in knowing what's good for your hands. </p>
+                    break;
+                case "Pedicure":
+                    <p> Being good to your hands and nails is about having good daily habits and
+                                choosing the right products to use on them. A few small changes could make
+                                a difference in how your hands and nails look and feel.
+                                WebMD asked dermatologists Jeffrey Dover, MD, associate clinical professor
+                                of dermatology at the Yale School of Medicine, and Heather Woolery-Lloyd, MD,
+                                assistant professor of dermatology at the University of Miami Miller School of
+                                Medicine, for guidance in knowing what's good for your hands. </p>
+                    break;
+                case "ManicureAndPadicure":
+                    <p> Being good to your hands and nails is about having good daily habits and
+                                choosing the right products to use on them. A few small changes could make
+                                a difference in how your hands and nails look and feel.
+                                WebMD asked dermatologists Jeffrey Dover, MD, associate clinical professor
+                                of dermatology at the Yale School of Medicine, and Heather Woolery-Lloyd, MD,
+                                assistant professor of dermatology at the University of Miami Miller School of
+                                Medicine, for guidance in knowing what's good for your hands. </p>
+                    break;
+                case "ParaffinHandTreatment":
+                    <p> Being good to your hands and nails is about having good daily habits and
+                                choosing the right products to use on them. A few small changes could make
+                                a difference in how your hands and nails look and feel.
+                                WebMD asked dermatologists Jeffrey Dover, MD, associate clinical professor
+                                of dermatology at the Yale School of Medicine, and Heather Woolery-Lloyd, MD,
+                                assistant professor of dermatology at the University of Miami Miller School of
+                                Medicine, for guidance in knowing what's good for your hands. </p>
+                    break;
+                case "ParaffinFootTreatment":
+                    <p> Being good to your hands and nails is about having good daily habits and
+                                choosing the right products to use on them. A few small changes could make
+                                a difference in how your hands and nails look and feel.
+                                WebMD asked dermatologists Jeffrey Dover, MD, associate clinical professor
+                                of dermatology at the Yale School of Medicine, and Heather Woolery-Lloyd, MD,
+                                assistant professor of dermatology at the University of Miami Miller School of
+                                Medicine, for guidance in knowing what's good for your hands. </p>
+                    break;
+                case "ParaffinHandAndFootTreatment":
+                    <p> Being good to your hands and nails is about having good daily habits and
+                                choosing the right products to use on them. A few small changes could make
+                                a difference in how your hands and nails look and feel.
+                                WebMD asked dermatologists Jeffrey Dover, MD, associate clinical professor
+                                of dermatology at the Yale School of Medicine, and Heather Woolery-Lloyd, MD,
+                                assistant professor of dermatology at the University of Miami Miller School of
+                                Medicine, for guidance in knowing what's good for your hands. </p>
+                    break;
+               
+            }
+                        
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.service_type)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.service_desc)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.service_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.service_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.service_id })
-        </td>
-    </tr>
+                        <br>
+                    </div>*@
+
+                    <br class="clearfix">
+                  
+                        <table border="1" style="width:80%; text-align:center; margin-left:-44px;">
+
+                            <tr>
+                                <th style="height:30px;width:20px;">Services Type</th>
+                                <th style="height:30px;width:80px;">Content</th>
+                                <th style="height:30px;width:60px;">Time Duration</th>
+                                <th style="height:30px;width:20px;">Price</th>
+                                <th style="height:30px;width:20px;">Booking</th>
+                            </tr>
+                            @for (int i = 0; i < @item.T2.ToList().Count(); i++)
+                {
+                    //@item.T2.ToList()[i].ServiceVeriation.ServiceVariation.ToString()
+                    <tr>
+                        <td style="height:30px;width:30px;">@item.T2.ToList()[i].ServiceVeriation.ServiceVariation.ToString()</td>
+                        <td>
+                            Content
+                        </td>
+                        <td style="height:30px;width:50px;">@item.T2.ToList()[i].ServiceDuration.ServiceDuration1.ToString()</td>
+                        <td>@item.T2.ToList()[i].ServicePrice.ServicePrice1.ToString()</td>
+                        <td>
+                            @Html.ActionLink("BOOKING", "Index", "bookings", new { @SId = item.T2.ToList()[i].ID }, null)
+                        </td>
+                    </tr>
+
+                }
+
+
+                        </table>
+
+                  
+                    <a href="#" class="back-to-top"><span style="color:white">BACK TO TOP</span></a>
+
+                </div>
+
 }
 
-</table>*@
+
+
+
+
+
+

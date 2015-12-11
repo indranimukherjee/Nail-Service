@@ -19,8 +19,13 @@ namespace nail_in_nottingham.Models
         public string consumer_last_name { get; set; }
         public string consumer__mobileno { get; set; }
         public string consumer_email { get; set; }
-        public int service_id { get; set; }
+        public System.DateTime booking_date { get; set; }
+        public int SlotID { get; set; }
+        public int BillDeskID { get; set; }
+        public string TotalAmount { get; set; }
+        public int TotalQuantity { get; set; }
     
-        public virtual Service Service { get; set; }
+        public virtual BillDesk BillDesk { get; set; }
+        public virtual Slot Slot { get; set; }
     }
 }
