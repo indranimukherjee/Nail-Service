@@ -16,7 +16,7 @@ namespace nail_in_nottingham.Controllers
 {
     public class bookingsController : Controller
     {
-        private nail_serviceEntities db = new nail_serviceEntities();
+        private NailModel db = new NailModel();
 
 
 
@@ -25,7 +25,7 @@ namespace nail_in_nottingham.Controllers
         public ActionResult Index(int Sid = 0)
         {
 
-            nail_serviceEntities db = new nail_serviceEntities();
+            NailModel db = new NailModel();
 
 
 
@@ -34,7 +34,7 @@ namespace nail_in_nottingham.Controllers
 
             bookingViewModel.bookingServices = new booking();
 
-            bookingViewModel.serviceBillDeskDetails = db.ServiceBillDesks.Where(x => x.ServiceMaster.ParentServiceId > 0).ToList();
+            bookingViewModel.serviceBillDeskDetails = db.ServiceBillDesks.ToList();
 
             // db.ServiceBillDesks.Where(x => x.ServiceMaster.ParentServiceId>0).GroupBy(s => s.ServiceID).ToList();
 
@@ -44,7 +44,7 @@ namespace nail_in_nottingham.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Index(BookingModel BOOK, FormCollection frm, string SlotType)
+        public ActionResult Index(booking BOOK, FormCollection frm, string SlotType)
         {
             //int serviceId = Convert.ToInt32(frm["Servicelist"].ToString());
 

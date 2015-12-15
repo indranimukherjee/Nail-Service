@@ -12,7 +12,7 @@ namespace nail_in_nottingham.Controllers
 {
     public class visitorsController : Controller
     {
-        private nail_serviceEntities db = new nail_serviceEntities();
+        private NailModel db = new NailModel();
 
         public ActionResult Index()
         {
@@ -23,7 +23,7 @@ namespace nail_in_nottingham.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Index(VisitorModel visitors)
+        public ActionResult Index(visitor visitors)
         {
             if (ModelState.IsValid)
             {
@@ -38,6 +38,8 @@ namespace nail_in_nottingham.Controllers
                     visitor_email = visitors.visitor_email,
                     testimonials=visitors.testimonials,
                     enquiry=visitors.enquiry
+
+                    //IsSent = true
                 });
                 int i = db.SaveChanges();
                 if (i > 0)

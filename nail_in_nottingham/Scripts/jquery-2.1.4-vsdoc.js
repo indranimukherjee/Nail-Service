@@ -4197,17 +4197,7 @@
         return this.mouseenter(fnOver).mouseleave(fnOut || fnOver);
     };
     jQuery.prototype.html = function (value) {
-        /// <summary>
-        ///     1: Get the HTML contents of the first element in the set of matched elements.
-        ///     &#10;    1.1 - html()
-        ///     &#10;2: Set the HTML contents of each element in the set of matched elements.
-        ///     &#10;    2.1 - html(htmlString) 
-        ///     &#10;    2.2 - html(function(index, oldhtml))
-        /// </summary>
-        /// <param name="value" type="htmlString">
-        ///     A string of HTML to set as the content of each matched element.
-        /// </param>
-        /// <returns type="jQuery" />
+       
 
         return jQuery.access(this, function (value) {
             var elem = this[0] || {},

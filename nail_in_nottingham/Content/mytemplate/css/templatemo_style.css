@@ -12,7 +12,7 @@ body {
     background-color: transparent;
     font-family:  Helvetica, sans-serif;
     font-size: 14px;
-	
+	height:auto;
 	font-weight: 300; 
 	font-style: normal; 
 	-webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
@@ -871,11 +871,26 @@ ul.templatemo-project-gallery  li  a img:hover {
  margin-bottom:20px;
 }
 
-.footer_bottom_content {
+/*.footer_bottom_content {
  margin: auto;
  margin-bottom: 30px;
  font-size: 14px;
  color:#333333;
+}*/
+
+.footer
+{
+    background-color: black;
+    height: 50px;
+    margin: 0 auto;
+    padding: 0;
+    width: 980px;
+    color:hotpink;
+}
+.footer a
+{
+    color: hotpink;
+    
 }
 
 .social-icon-fb {
@@ -1034,19 +1049,18 @@ a:hover .social-icon-dribbble {
     font-size: 9px;
     color:hotpink;
 }
+.offer{
+   width: 164px;
+      margin-left: 748px;
+    margin-top: -42px;
+    font-size: 9px;
+    color:hotpink;
+    margin-right:29px;
+}
 .hour{
-    /*margin-left: 0;
-    margin-top: 0;
-    width: 100px;
-    height: 75px;
-    padding: 10px;
-    border: 2px solid black;
-    margin: 125px;
-    border-radius: 25px;
-    float: right;*/
+ 
     margin-left: 875px;
     margin-top: -30px;
-    /*border: 1px solid;*/
     height: 215px;
     width: 270px;
     font-size: 12px;
@@ -1099,4 +1113,11 @@ a:hover .social-icon-dribbble {
 }
 .book_link {
         margin-left: 383px;
+}
+
+.submit
+{
+    margin-bottom:30px;
+    margin-top:10px;
+     cursor: pointer;
 }

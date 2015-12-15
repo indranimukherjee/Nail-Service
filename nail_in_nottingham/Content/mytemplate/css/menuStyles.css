@@ -570,24 +570,7 @@
 .text-center {
     text-align: center;
 }
- .text1{
-     width: 240px;
-    margin-left: 38px;
-    margin-top: 34px;
-    color:purple;
- }
- .text2{
-     width: 240px;
-    margin-left: 56px;
-    margin-top: 34px;
-    color:purple;
- }
- .text3{
-     width: 240px;
-    margin-left: 56px;
-    margin-top: 58px;
-    color:purple;
- }
+
  .offer {
     float: left;
     height: 550px;

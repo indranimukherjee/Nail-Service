@@ -9,7 +9,7 @@ namespace nail_in_nottingham.Controllers
 {
     public class HomeController : Controller
     {
-        private nail_serviceEntities _db = new nail_serviceEntities();
+        private NailModel _db = new NailModel();
         public ActionResult Index()
         {
             return View();

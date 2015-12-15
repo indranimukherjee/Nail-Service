@@ -5,6 +5,9 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using System.Data.Entity;
+using nail_in_nottingham.Models;
+using nail_in_nottingham.ServiceDataInitializer;
 
 namespace nail_in_nottingham
 {
@@ -12,6 +15,9 @@ namespace nail_in_nottingham
     {
         protected void Application_Start()
         {
+            //Database.SetInitializer<NailModel>(new DropCreateDatabaseIfModelChanges<NailModel>());
+            Database.SetInitializer<NailModel>(new NailServiceInitializer());
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
