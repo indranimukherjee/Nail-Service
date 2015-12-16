@@ -26,8 +26,8 @@
 
                     Nottingham, Nottinghamshire<br /><br />
 
-                    NG1 2AN , United Kingdom<br /><br />
-                    0115 950 8932
+                    NG1 2AN , United Kingdom<br />
+                    Phone: 0115 950 8932 <br />
 
                 </strong>
             </p>
@@ -38,17 +38,17 @@
 
             <iframe width="400" height="170" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.co.uk/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=+WD6+1JN&amp;aq=&amp;sll=51.650932,-0.274843&amp;sspn=0.008095,0.021136&amp;ie=UTF8&amp;hq=&amp;hnear=Borehamwood+WD6+2FN,+United+Kingdom&amp;ll=51.650926,-0.274851&amp;spn=0.008095,0.021136&amp;t=m&amp;z=14&amp;output=embed"></iframe>
         </div>
-        <div class="contact_us">
-            <div>
-                <fieldset>
+        @*<div class="contact_us">*@
+                <fieldset style="width: 40%; margin-left: 10%;">
                     <legend>Contact Form</legend>
                     <table style="font-size:12px;">
+                        
                         <tr>
                             <td>
-                                Your Name:
+                                Your Name<span style="color:red;">*</span>:
                             </td>
                             <td>
-                                @Html.EditorFor(Model => Model.visitor_name, new { @style = "margin-left: 185px; width:200px;" })
+                                @Html.TextBoxFor(Model => Model.visitor_name, new { @style = "", @placeholder = "Provide Your Name" })
                                 @Html.ValidationMessageFor(Model => Model.visitor_name)
                             </td>
                         </tr>
@@ -56,10 +56,10 @@
                         <tr>
                             <td>
                                 Location:
+                                @*Location<span style="color:red;">*</span>:*@
                             </td>
                             <td>
-                                @*@Html.LabelFor(Model => Model.visitor_location)*@
-                                @Html.EditorFor(Model => Model.visitor_location, new { @style = "margin-left: 185px; width:200px;" })
+                                @Html.TextBoxFor(Model => Model.visitor_location, new { @style = "" , @placeholder = "Provide Your Location" })
 
                                 @Html.ValidationMessageFor(Model => Model.visitor_location)
                             </td>
@@ -67,10 +67,10 @@
                         </tr>
 
                         <tr>
-                            <td> Phone Number:</td>
+                            <td> Phone Number<span style="color:red;">*</span>:</td>
                             <td>
-                                @Html.EditorFor(Model => Model.visitor_phoneno, new { @style = "margin-left: 185px; width:200px;", maxLength = 10 })
-                                @Html.ValidationMessageFor(Model => Model.visitor_phoneno)
+                                @Html.TextBoxFor(Model => Model.visitor_phoneno, new { @style = "", @placeholder = "Provide Your ContactNo" })
+                    @Html.ValidationMessageFor(Model => Model.visitor_phoneno)
 
                             </td>
                         </tr>
@@ -78,11 +78,11 @@
                         <tr>
                             <td>
 
-                                E-mail:
+                                E-mail<span style="color:red;">*</span>:
                             </td>
                             <td>
-                                @Html.EditorFor(Model => Model.visitor_email, new { @style = "margin-left: 185px; width:200px;" })
-                                @Html.ValidationMessageFor(Model => Model.visitor_email)
+                                @Html.TextBoxFor(Model => Model.visitor_email, new { @style = "", @placeholder = "Provide Your Email" })
+                      @Html.ValidationMessageFor(Model => Model.visitor_email)
 
                             </td>
                         </tr>
@@ -92,25 +92,7 @@
                                 Would you like to submit?
                             </td>
                             <td>
-                                <script src="~/Content/mytemplate/js/jquery.msgbox.i18n.js"></script>
-
-                                <script src="~/Content/mytemplate/js/jquery.msgbox.js"></script>
-                              
-
-                                <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-                                <script type="text/javascript">
-                                    function showTestiEnqu(value) {
-                                        if (value == '1') {
-                                            $('#dvTestimonial').css('display', 'block');
-                                            $('#dvEnquiry').css('display', 'none');
-                                        }
-                                        else {
-                                            $('#dvEnquiry').css('display', 'block');
-                                            $('#dvTestimonial').css('display', 'none');
-                                        }
-                                    }
-
-                                </script>
+                               
 
                                 <p> @Html.RadioButton("testiEnqu", "1", new { onclick = "showTestiEnqu('1')" })Testimonial</p>
                                 <p>
@@ -125,10 +107,10 @@
                             <td></td>
                             <td>
                                 <div id="dvTestimonial" style="display:none ">
-                                    @Html.TextAreaFor(model => model.testimonials, new { placeholder = "Submit Your Testimonial here", Style = " margin-left: -147px;   height: 74px; width: 421px;" })
+                                    @Html.TextAreaFor(model => model.testimonials, new { placeholder = "Submit Your Testimonial here", Style = " height: 74px; width: 421px;" })
                                 </div>
                                 <div id="dvEnquiry" style="display:none;">
-                                    @Html.TextAreaFor(model => model.enquiry, new { placeholder = "Submit Your Enquiry Here", Style = " margin-left: -147px;   height: 74px; width: 421px;" })
+                                    @Html.TextAreaFor(model => model.enquiry, new { placeholder = "Submit Your Enquiry Here", Style = "height: 74px; width: 421px;" })
                                 </div>
                             </td>
                         </tr>   
@@ -136,14 +118,34 @@
 
 
                 </fieldset>
-            </div>
+           
             <div class="submit" style="margin-bottom:30px;margin-top:10px;">
-                <input type="image" img src="~/Content/mytemplate/images/submit-button.png" style="margin-left: 151px; margin-top: 27px; height: 23px; width: 164px;" />
+                <input type="image" img src="~/Content/mytemplate/images/submit-button.png" style="margin-left: 151px; margin-top: 0px; height: 23px; width: 164px;" />
                 <a href="#" class="back-to-top"><span style="color:white">BACK TO TOP</span></a>
             </div>
         </div>
 
-    </div>
+
 
  
 }
+
+<script src="~/Content/mytemplate/js/jquery.msgbox.i18n.js"></script>
+
+<script src="~/Content/mytemplate/js/jquery.msgbox.js"></script>
+
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+                                    function showTestiEnqu(value) {
+                                        if (value == '1') {
+                                            $('#dvTestimonial').css('display', 'block');
+                                            $('#dvEnquiry').css('display', 'none');
+                                        }
+                                        else {
+                                            $('#dvEnquiry').css('display', 'block');
+                                            $('#dvTestimonial').css('display', 'none');
+                                        }
+                                    }
+
+</script>

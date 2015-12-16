@@ -1,93 +1,76 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Offer";
     Layout = "~/Views/Shared/_mytemplate.cshtml";
 }
 
 <head>
-    <script src="~/Content/mytemplate/js/snowstorm.js"></script>
-    <script src="~/Content/mytemplate/js/snowstorm-min.js"></script>
 
-    <script type="text/javascript" language="javascript">
-
-        snowStorm.snowColor = '#5CB3FF';
-        snowStorm.animationInterval = 20;
-        snowStorm.flakeBottom = null;
-        snowStorm.flakesMax = 200;
-        snowStorm.flakesMaxActive = 200;
-        snowStorm.followMouse = true;
-        snowStorm.snowStick = true;
-        snowStorm.snowCharacter = '*';
-        snowStorm.useTwinkleEffect = true;
-        snowStorm.snowflakeWidth = '200px';
-        snowStorm.snowflakeHeight = '200px';
-     //$(document).ready(function() {
-     //    snowStorm.snowColor = '#0000FF';   // blue-ish snow!?
-     //    snowStorm.flakesMaxActive = 96;    // show more snow on screen at once
-     //    snowStorm.useTwinkleEffect = true;
-     //    document.getElementById("offer-design").innerHTML;
-
-     //});
-    </script>
 </head>
 <body>
-    <div style="height:600px;">
-        <div class="offer" style="text-align:center;">
+    <div style="height:600px; width:100%">
+        <div class="payment float_l" style="text-align:center;">
             <h2 style="text-align:center;color:hotpink">OFFERS</h2>
-            <table border="1" style="width:48%;text-align:center;margin-left:10px;">
+            <table border="1">
                 <tr>
-                    <td colspan="3" width="50%" style="color:hotpink;">Avail Flat 50% Off In February</td>
-                    @*<td>OFFERS</td>
-                        <td>OFFERS</td>*@
+                    <td colspan="2" width="50%" style="text-align:center;color:hotpink;">Avail Flat 50% Off In February</td>
+
                 </tr>
                 <tr>
-                    <td height="100" width="200"><img src="~/Content/mytemplate/images/nail-caviar.jpg " height="100" width="200" alt="icon" /></td>
+                    <td><img src="~/Content/mytemplate/images/nail-caviar.jpg " height="100" width="200" alt="icon" /></td>
                     <td><img src="~/Content/mytemplate/images/nail-wedding.png" height="100" width="200" alt="icon" /></td>
-                    @*<td><img src="~/Content/mytemplate/images/nail-caviar.jpg " height="100" width="200" alt="icon" /></td>*@
                 </tr>
                 <tr>
                     <td><img src="~/Content/mytemplate/images/ServiceImages/ParaffinHandTreatment.jpg" height="100" width="200" alt="icon" /></td>
                     <td><img src="~/Content/mytemplate/images/ServiceImages/ParaffinFootTreatment.jpg" height="100" width="200" alt="icon" /></td>
-                    @*<td><img src="~/Content/mytemplate/images/nail-caviar.jpg " height="100" width="200" alt="icon" /></td>*@
                 </tr>
                 <tr>
                     <td><img src="~/Content/mytemplate/images/ServiceImages/AcrylicOverlays.jpg" height="100" width="200" alt="icon" /></td>
                     <td><img src="~/Content/mytemplate/images/ServiceImages/FrenchInfill.jpg" height="100" width="200" alt="icon" /></td>
-                    @*<td><img src="~/Content/mytemplate/images/nail-caviar.jpg " height="100" width="200" alt="icon" /></td>*@
                 </tr>
                 <tr>
                     <td><img src="~/Content/mytemplate/images/ServiceImages/GelManicure.jpg" height="100" width="200" alt="icon" /></td>
                     <td><img src="~/Content/mytemplate/images/ServiceImages/Infills.jpg" height="100" width="200" alt="icon" /></td>
-                    @*<td><img src="~/Content/mytemplate/images/nail-caviar.jpg " height="100" width="200" alt="icon" /></td>*@
                 </tr>
 
             </table>
         </div>
-        <div class="giftcard" style="text-align:center;">
+        @*<div class="float_l" style="text-align:center;padding-left:5%">
+
+                <table>
+                    <tr >
+                        <td>
+
+
+                            <img src="~/Content/mytemplate/images/2016_logo.png" />
+                        </td>
+                    </tr>
+
+                </table>
+
+            </div>*@
+        <div class="payment float_r col_last" style="text-align:center;">
             <h2 style="text-align:center; color:hotpink;">GIFTCARDS</h2>
-            <table border="1" style="width:48%; float:right;text-align:center;margin-right:10px;">
+            <table border="1">
                 <tr>
-                    <td colspan="3" width="50%;" style="color:hotpink;"> BUY GIFT CARDS</td>
-                    @*<td>GIFT CARDS</td>
-                        <td>GIFT CARDS</td>*@
+                    <td colspan="2" width="50%;" style="color:hotpink;text-align:center;"> BUY GIFT CARDS</td>
+                </tr>
                 <tr>
                     <td><img src="~/Content/mytemplate/images/gift1.jpg" height="100" width="200" alt="icon" /></td>
                     <td><img src="~/Content/mytemplate/images/gift2.jpg" height="100" width="200" alt="icon" /></td>
-                    @*<td><img src="~/Content/mytemplate/images/gift3.jpg" height="100" width="200" alt="icon" /></td>*@
                 </tr>
                 <tr>
                     <td><img src="~/Content/mytemplate/images/gift4.jpg" height="100" width="200" alt="icon" /></td>
                     <td><img src="~/Content/mytemplate/images/gift5.jpg" height="100" width="200" alt="icon" /></td>
-                    @*<td><img src="~/Content/mytemplate/images/gift6.jpg" height="100" width="200" alt="icon" /></td>*@
+
+
+
                 <tr>
                     <td><img src="~/Content/mytemplate/images/gift7.jpg" height="100" width="200" alt="icon" /></td>
                     <td><img src="~/Content/mytemplate/images/gift8.jpg" height="100" width="200" alt="icon" /></td>
-                    @*<td><img src="~/Content/mytemplate/images/gift9.jpg" height="100" width="200" alt="icon" /></td>*@
                 </tr>
                 <tr>
                     <td><img src="~/Content/mytemplate/images/gift10.jpg" height="100" width="200" alt="icon" /></td>
                     <td><img src="~/Content/mytemplate/images/gift11.jpg" height="100" width="200" alt="icon" /></td>
-                    @*<td><img src="~/Content/mytemplate/images/gift12.jpg" height="100" width="200" alt="icon" /></td>*@
                 </tr>
 
 
@@ -96,5 +79,103 @@
     </div>
     <a href="#" class="back-to-top"><span style="color:white">BACK TO TOP</span></a>
 
-</body>
+    <script type="text/javascript">
 
+        function openwindow() {
+            window.open("autumn_effect.htm", "", "width=150,height=500")
+        }
+
+        //Configure below to change URL path to the snow image
+        var snowsrc = "/Content/mytemplate/images/trans.png"
+        //<img src="~/Content/mytemplate/images/snow.gif" />
+        // Configure below to change number of snow to render
+        var no = 40;
+        // Configure whether snow should disappear after x seconds (0=never):
+        var hidesnowtime = 0;
+        // Configure how much snow should drop down before fading ("windowheight" or "pageheight")
+        var snowdistance = "pageheight";
+
+        ///////////Stop Config//////////////////////////////////
+
+        var ie4up = (document.all) ? 1 : 0;
+        var ns6up = (document.getElementById && !document.all) ? 1 : 0;
+
+        function iecompattest() {
+            return (document.compatMode && document.compatMode != "BackCompat") ? document.documentElement : document.body
+        }
+
+        var dx, xp, yp;    // coordinate and position variables
+        var am, stx, sty;  // amplitude and step variables
+        var i, doc_width = 800, doc_height = 600;
+
+        if (ns6up) {
+            doc_width = self.innerWidth;
+            doc_height = self.innerHeight;
+        } else if (ie4up) {
+            doc_width = iecompattest().clientWidth;
+            doc_height = iecompattest().clientHeight;
+        }
+
+        dx = new Array();
+        xp = new Array();
+        yp = new Array();
+        am = new Array();
+        stx = new Array();
+        sty = new Array();
+
+        snowsrc = (snowsrc.indexOf("dynamicdrive.com") != -1) ? "/Content/mytemplate/images/trans.png" : snowsrc
+        for (i = 0; i < no; ++i) {
+            dx[i] = 0;                        // set coordinate variables
+            xp[i] = Math.random() * (doc_width - 50);  // set position variables
+            yp[i] = Math.random() * doc_height;
+            am[i] = Math.random() * 20;         // set amplitude variables
+            stx[i] = 0.02 + Math.random() / 10; // set step variables
+            sty[i] = 0.7 + Math.random();     // set step variables
+            if (ie4up || ns6up) {
+                if (i == 0) {
+                    document.write("<div id=\"dot" + i + "\" style=\"POSITION: absolute; Z-INDEX: " + i + "; VISIBILITY: visible; TOP: 15px; LEFT: 15px;\"><a href=\"http://dynamicdrive.com\"><img src='" + snowsrc + "' border=\"0\"><\/a><\/div>");
+                } else {
+                    document.write("<div id=\"dot" + i + "\" style=\"POSITION: absolute; Z-INDEX: " + i + "; VISIBILITY: visible; TOP: 15px; LEFT: 15px;\"><img src='" + snowsrc + "' border=\"0\"><\/div>");
+                }
+            }
+        }
+
+        function snowIE_NS6() {  // IE and NS6 main animation function
+            doc_width = ns6up ? window.innerWidth - 10 : iecompattest().clientWidth - 10;
+            doc_height = (window.innerHeight && snowdistance == "windowheight") ? window.innerHeight : (ie4up && snowdistance == "windowheight") ? iecompattest().clientHeight : (ie4up && !window.opera && snowdistance == "pageheight") ? iecompattest().scrollHeight : iecompattest().offsetHeight;
+            if (snowdistance == "windowheight") {
+                doc_height = window.innerHeight || iecompattest().clientHeight
+            }
+            else {
+                doc_height = iecompattest().scrollHeight
+            }
+            for (i = 0; i < no; ++i) {  // iterate for every dot
+                yp[i] += sty[i];
+                if (yp[i] > doc_height - 50) {
+                    xp[i] = Math.random() * (doc_width - am[i] - 30);
+                    yp[i] = 0;
+                    stx[i] = 0.02 + Math.random() / 10;
+                    sty[i] = 0.7 + Math.random();
+                }
+                dx[i] += stx[i];
+                document.getElementById("dot" + i).style.top = yp[i] + "px";
+                document.getElementById("dot" + i).style.left = xp[i] + am[i] * Math.sin(dx[i]) + "px";
+            }
+            snowtimer = setTimeout("snowIE_NS6()", 50);
+        }
+
+        function hidesnow() {
+            if (window.snowtimer) clearTimeout(snowtimer)
+            for (i = 0; i < no; i++) document.getElementById("dot" + i).style.visibility = "hidden"
+        }
+
+
+        if (ie4up || ns6up) {
+            snowIE_NS6();
+            if (hidesnowtime > 0)
+                setTimeout("hidesnow()", hidesnowtime * 1000)
+        }
+
+    </script>
+
+</body>

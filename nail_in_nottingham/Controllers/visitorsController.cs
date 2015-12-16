@@ -39,7 +39,6 @@ namespace nail_in_nottingham.Controllers
                     testimonials=visitors.testimonials,
                     enquiry=visitors.enquiry
 
-                    //IsSent = true
                 });
                 int i = db.SaveChanges();
                 if (i > 0)

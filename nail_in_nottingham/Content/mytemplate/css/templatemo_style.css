@@ -881,7 +881,7 @@ ul.templatemo-project-gallery  li  a img:hover {
 .footer
 {
     background-color: black;
-    height: 50px;
+    height: auto;
     margin: 0 auto;
     padding: 0;
     width: 980px;
@@ -1050,12 +1050,12 @@ a:hover .social-icon-dribbble {
     color:hotpink;
 }
 .offer{
-   width: 164px;
-      margin-left: 748px;
-    margin-top: -42px;
-    font-size: 9px;
-    color:hotpink;
-    margin-right:29px;
+     width: 43%;
+    margin-left: 123px;
+    margin-top: 0px;
+    color: hotpink;
+    margin-right: 0;
+    float: left;
 }
 .hour{
  
@@ -1102,7 +1102,6 @@ a:hover .social-icon-dribbble {
 .template-footer {
     margin-top: 10px;
     margin-left: 0px;
-    border-top: 1px solid;
     border-top-color: hotpink;
     border-top-width: 1px;
     border-top-color: grey;
@@ -1120,4 +1119,59 @@ a:hover .social-icon-dribbble {
     margin-bottom:30px;
     margin-top:10px;
      cursor: pointer;
+}
+#tooplate_footer_wrapper {
+ width: 100%;
+ background: #000000;
+    padding-bottom:2%;
+}
+#tooplate_footer_wrapper a  {
+ color:white;
+    
+}
+
+#tooplate_footer {
+ padding-left:5%;
+    padding-right:5%;
+ color: white;
+ margin: 0 auto;
+}
+
+#tooplate_copyright_wrapper {
+ width: 100%;
+ background: #000000;
+}
+
+#tooplate_copyright {
+ width: 960px;
+ padding: 10px;
+ color: white;
+ margin: 0 auto;
+ text-align: center;
+}
+.col_w200 {
+    width: 200px;
+    margin-right: 5%;
+}
+
+.col_w300 {
+    width: 300px;
+    margin-right: 50px;
+}
+
+.float_l {
+    float: left;
+}
+.float_r {
+    float: right;
+}
+.col_last {
+    margin: 0;
+}
+.cleaner { clear: both }
+.payment {
+    width: 40%;
+   
+    height:auto;
+    
 }

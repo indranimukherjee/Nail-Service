@@ -581,9 +581,9 @@
 }
  .giftcard {
     float: right;
-    margin-right: 61px;
+    margin-right: 0px;
     height: 550px;
-    width: 440px;
+    width: 45%;
     text-align: center;
 }
 

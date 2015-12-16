@@ -263,6 +263,7 @@
     <Content Include="Content\mytemplate\images\ServiceImages\Pedicure.jpg" />
     <Content Include="Content\mytemplate\images\sftrhand.jpg" />
     <Content Include="Content\mytemplate\images\ServiceImages\soakoff.jpg" />
+    <Content Include="Content\mytemplate\images\snow.gif" />
     <Content Include="Content\mytemplate\images\social-icon-dribbble-over.png" />
     <Content Include="Content\mytemplate\images\social-icon-dribbble.png" />
     <Content Include="Content\mytemplate\images\social-icon-fb-over.png" />
@@ -278,6 +279,7 @@
     <Content Include="Content\mytemplate\images\TheNailLogo.gif" />
     <Content Include="Content\mytemplate\images\The_New_Logo.jpg" />
     <Content Include="Content\mytemplate\images\ServiceImages\WeddingNailArt.jpg" />
+    <Content Include="Content\mytemplate\images\trans.png" />
     <Content Include="Content\mytemplate\js\bootstrap.min.js" />
     <Content Include="Content\mytemplate\js\jquery-1.3.2.min.js" />
     <Content Include="Content\mytemplate\js\jquery-1.9.1.min.js" />
