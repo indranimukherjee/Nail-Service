@@ -161,7 +161,7 @@
                 document.getElementById("dot" + i).style.top = yp[i] + "px";
                 document.getElementById("dot" + i).style.left = xp[i] + am[i] * Math.sin(dx[i]) + "px";
             }
-            snowtimer = setTimeout("snowIE_NS6()", 50);
+            snowtimer = setTimeout("snowIE_NS6()", 20);
         }
 
         function hidesnow() {
@@ -173,7 +173,7 @@
         if (ie4up || ns6up) {
             snowIE_NS6();
             if (hidesnowtime > 0)
-                setTimeout("hidesnow()", hidesnowtime * 1000)
+                setTimeout("hidesnow()", hidesnowtime * 100)
         }
 
     </script>
