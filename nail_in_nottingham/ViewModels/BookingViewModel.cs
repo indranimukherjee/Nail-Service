@@ -10,6 +10,7 @@ namespace nail_in_nottingham.ViewModels
     {
         public List<ServiceBillDesk> serviceBillDeskDetails { get; set; }
 
+        public List<SelectedItem> SelectedItem { get; set; }
         public booking bookingServices { get; set; }
     }
 }

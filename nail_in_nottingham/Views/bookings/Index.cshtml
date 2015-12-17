@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "All Services";
 }
+
 @{
 
     var serviceDetailsList = (from s in Model.serviceBillDeskDetails
@@ -30,6 +31,7 @@
     var timeDuration = "";
     var price = "";
     var quantity = "";
+
 
     //Show Details of Service
     function ShowModal(serviceName, serviceId) {
@@ -65,7 +67,7 @@
                 }
             },
             title: serviceName
-        
+
         };
         var theDialog = $(divModal).dialog(opt);
         theDialog.dialog("open");
@@ -86,15 +88,6 @@
 
 </script>
 
-
-
-
-@* All Service Type *@
-
-
-@*<div align="left" id="dvBillDesk">
-
-    </div>*@
 
 @foreach (var item in serviceDetailsList)
 {
@@ -121,8 +114,8 @@
                         @for (int i = 0; i < @item.T2.ToList().Count(); i++)
                         {
                             var serviceVariation = item.T2.ToList()[i].ServiceVeriation.ServiceVariation.ToString();
-                            var serviceDuration = item.T2.ToList()[i].ServiceDuration.ServiceDuration1.ToString();
-                            var servicePrice = item.T2.ToList()[i].ServicePrice.ServicePrice1.ToString();
+                            var serviceDuration = item.T2.ToList()[i].ServiceDuration.ToString();
+                            var servicePrice = item.T2.ToList()[i].ServicePrice.ToString();
                             //@item.T2.ToList()[i].ServiceVeriation.ServiceVariation.ToString()
                             <tr>
                                 <td>@serviceVariation</td>
@@ -153,7 +146,7 @@
                     <h2>ALL SERVICES</h2>
                     @foreach (var item in serviceDetailsList)
                     {
-                        <a href="javascript:void(0)" id="btn_click" onclick="ShowModal('@item.T2.ToList()[0].ServiceMaster.ServiceType.Replace(" ","")','@item.T1.ToString()')">  @item.T2.ToList()[0].ServiceMaster.ServiceType.ToString() </a>
+                        <a href="javascript:void(0)" id="btn_click" onclick="ShowModal('@item.T2.ToList()[0].ServiceMaster.ServiceType.Replace(" "," ").ToString()','@item.T1.ToString()')">  @item.T2.ToList()[0].ServiceMaster.ServiceType.ToString() </a>
                         <br />
                         <br />
                     }
@@ -164,7 +157,7 @@
         <td align="center" width="60%" colspan="4">
 
             <div class="left">
-                <div class="BillDeskPos" style="margin-top: -452px">
+                <div class="BillDeskPos" style="margin-top: -423px">
                     <div align="center"><h3>Bill Desk</h3></div>
 
                     <table id="tbBillDesk" border="1" width="100%">
@@ -177,6 +170,46 @@
                             <th>No. Of Person</th>
                             <th hidden="hidden"></th>
                         </tr>
+
+                        @if (Model.SelectedItem != null)
+                        {
+                            foreach (var item in Model.SelectedItem)
+                            {
+                                <tr>
+                                    <td><img width="20px" height="20px" src="../Content/mytemplate/images/remove.png" onclick="RemoveRow(this)" /></td>
+                                    <td>@item.ServiceName</td>
+                                    <td>@item.serviceVeriation</td>
+                                    <td>@item.timeDuration</td>
+                                    <td>@item.price</td>
+                                    <td> <input type="number" value=@item.NoOfPerson min="1" max="10" id="SQuantity" /></td>
+                                    <td hidden="hidden">@item.ServiceBillDeskId</td>
+
+
+                                </tr>
+
+                            }
+
+                        }
+
+                        @*@if(ViewBag.ServiceItem!=null){
+                            var SelectedItem = (nail_in_nottingham.Models.ServiceBillDesk)ViewBag.ServiceItem;
+                            foreach (var item in SelectedItem)
+                            {
+                            <tr>
+                                <td>
+                                    @item.ServiceMaster.ServiceType.ToString()
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            }
+
+
+
+                            }*@
                     </table>
                 </div>
             </div>
@@ -251,42 +284,49 @@
 
         </td>
     </tr>
-    <tr>
-        @* for Showing All Services Name *@
-        <td align="left" width="5%" colspan="4">
-            <div id="AllServicesList">
+    @*
+        <tr>
+            @* for Showing All Services Name
+            <td align="left" width="5%" colspan="4">
+                <div id="AllServicesList">
+                    <div class="left">
+
+                    </div>
+                </div>
+            </td>
+            @*For Booking Details
+            <td align="center" width="60%" colspan="4">
+
+                <div class="left">
+                    <div class="BillDeskPos" style="margin-top: -60px">
+
+                        <table id="tbBillDesk" border="1" width="100%">
+                            <tr>
+                                <th hidden="hidden"></th>
+                                <th hidden="hidden" width="40%"></th>
+                                <th hidden="hidden" width="20%"></th>
+                                <th hidden="hidden"></th>
+                                <th width="10%" align="right"></th>
+                                <th align="right"></th>
+                                <th hidden="hidden"></th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+            </td>
+
+
+            <td align="right" width="33%" colspan="4">
                 <div class="left">
 
+
+
                 </div>
-            </div>
-        </td>
-        @*For Booking Details*@
-        <td align="center" width="60%" colspan="4">
-
-            <div class="left">
-                
-            </div>
-
-        </td>
 
 
-        <td align="right" width="33%" colspan="4">
-            <div class="left">
-
-
-
-            </div>
-
-
-        </td>
-    </tr>
+            </td>
+        </tr>*@
 </table>
-
-<a href="#" class="back-to-top"><span style="color:white">BACK TO TOP</span></a>
-
-
-
-
-
 
 

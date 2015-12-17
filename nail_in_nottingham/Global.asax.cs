@@ -15,7 +15,6 @@ namespace nail_in_nottingham
     {
         protected void Application_Start()
         {
-            //Database.SetInitializer<NailModel>(new DropCreateDatabaseIfModelChanges<NailModel>());
             Database.SetInitializer<NailModel>(new NailServiceInitializer());
 
             AreaRegistration.RegisterAllAreas();

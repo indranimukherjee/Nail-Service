@@ -12,9 +12,7 @@ namespace nail_in_nottingham.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ServiceMaster()
         {
-            BillDesks = new HashSet<BillDesk>();
             ServiceBillDesks = new HashSet<ServiceBillDesk>();
-       
         }
 
         public int ID { get; set; }
@@ -24,15 +22,7 @@ namespace nail_in_nottingham.Models
 
         public string ServiceDesc { get; set; }
 
-     
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BillDesk> BillDesks { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ServiceBillDesk> ServiceBillDesks { get; set; }
-
-
-
     }
 }

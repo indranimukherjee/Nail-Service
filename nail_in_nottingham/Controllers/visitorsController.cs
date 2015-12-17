@@ -27,8 +27,6 @@ namespace nail_in_nottingham.Controllers
         {
             if (ModelState.IsValid)
             {
-              
-
                 db.visitors.Add(new visitor
                 {
                     vstr_id = visitors.vstr_id,

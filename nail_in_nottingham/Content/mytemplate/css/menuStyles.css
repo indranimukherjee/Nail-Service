@@ -1,7 +1,7 @@
 #cssmenu {
   position: relative;
   height: 44px;
-  background: black;
+  background: transparent;
   width: auto;
   margin-left: 140px;
 }

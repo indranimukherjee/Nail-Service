@@ -9,8 +9,13 @@ namespace nail_in_nottingham.Models
     [Table("booking")]
     public partial class booking
     {
-        [Key]
-        public int booking_id { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public booking()
+        {
+            BillDesks = new HashSet<BillDesk>();
+        }
+
+        public int ID { get; set; }
 
         [Required]
         [StringLength(50)]
@@ -29,19 +34,16 @@ namespace nail_in_nottingham.Models
         public string consumer_email { get; set; }
 
         [Column(TypeName = "date")]
-        public DateTime booking_date { get; set; }
+        public DateTime booking_start_datetime { get; set; }
 
-        public int SlotID { get; set; }
-
-        public int BillDeskID { get; set; }
+        public DateTime booking_end_datetime { get; set; }
 
         [Required]
         public string TotalAmount { get; set; }
 
         public int TotalQuantity { get; set; }
 
-        public virtual BillDesk BillDesk { get; set; }
-
-        public virtual Slot Slot { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BillDesk> BillDesks { get; set; }
     }
 }

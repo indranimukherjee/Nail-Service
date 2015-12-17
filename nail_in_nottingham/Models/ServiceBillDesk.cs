@@ -19,9 +19,11 @@ namespace nail_in_nottingham.Models
 
         public int ServiceID { get; set; }
 
-        public int ServiceDurationID { get; set; }
+        [Required]
+        public string ServiceDuration { get; set; }
 
-        public int ServicePriceID { get; set; }
+        [Required]
+        public string ServicePrice { get; set; }
 
         public int ServiceVeriationID { get; set; }
 
@@ -33,12 +35,8 @@ namespace nail_in_nottingham.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BillDesk> BillDesks { get; set; }
 
-        public virtual ServiceMaster ServiceMaster { get; set; }
-
-        public virtual ServiceDuration ServiceDuration { get; set; }
-
-        public virtual ServicePrice ServicePrice { get; set; }
-
         public virtual ServiceVeriation ServiceVeriation { get; set; }
+
+        public virtual ServiceMaster ServiceMaster { get; set; }
     }
 }

@@ -19,24 +19,31 @@
 
     <div class="contact_page">
         <div class="address">
-            <h2 style="border-bottom:1px solid">Come Visit Us At Our Studio </h2>
-            <p style="font-family:sans-serif;font-size:10px;margin-top:10px;">
-                <strong>                   
+            <h2 style="border-bottom:1px solid;font-size:14px;">Come Visit Us At Our Studio </h2>
+            <p style="font-family:sans-serif;font-size:12px;margin-top:10px;">
+                <strong>
                     19 Trinity Walk <br /><br />
 
                     Nottingham, Nottinghamshire<br /><br />
 
-                    NG1 2AN , United Kingdom<br />
-                    Phone: 0115 950 8932 <br />
+                    NG1 2AN , United Kingdom<br /><br />
+
+                    Phone: 0115 950 8932 <br /><br />
 
                 </strong>
             </p>
-        </div><br /><br />
+            <br/><br /><br /><br />
+        </div>
+
         <div id="map">
+            <br/>
+            <br /><br />
+            <br /><br />
             <h2>LOCATE US</h2>
 
 
-            <iframe width="400" height="170" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.co.uk/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=+WD6+1JN&amp;aq=&amp;sll=51.650932,-0.274843&amp;sspn=0.008095,0.021136&amp;ie=UTF8&amp;hq=&amp;hnear=Borehamwood+WD6+2FN,+United+Kingdom&amp;ll=51.650926,-0.274851&amp;spn=0.008095,0.021136&amp;t=m&amp;z=14&amp;output=embed"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2403.6073039037315!2d-1.1513222841762305!3d52.955488679899055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4879c17ff3f6402f%3A0x54fd5af3d5404712!2s19+Trinity+Walk%2C+Nottingham%2C+Nottinghamshire+NG1+2AN%2C+UK!5e0!3m2!1sen!2sin!4v1450346303554" width="400" height="170" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" >
+            </iframe>
         </div>
         @*<div class="contact_us">*@
                 <fieldset style="width: 40%; margin-left: 10%;">
@@ -44,7 +51,7 @@
                     <table style="font-size:12px;">
                         
                         <tr>
-                            <td>
+                            <td style="font-size:14px;">
                                 Your Name<span style="color:red;">*</span>:
                             </td>
                             <td>
@@ -54,7 +61,7 @@
                         </tr>
 
                         <tr>
-                            <td>
+                            <td style="font-size:14px;">
                                 Location:
                                 @*Location<span style="color:red;">*</span>:*@
                             </td>
@@ -67,7 +74,8 @@
                         </tr>
 
                         <tr>
-                            <td> Phone Number<span style="color:red;">*</span>:</td>
+                            <td style="font-size:14px;">
+                           Phone Number<span style="color:red;">*</span>:</td>
                             <td>
                                 @Html.TextBoxFor(Model => Model.visitor_phoneno, new { @style = "", @placeholder = "Provide Your ContactNo" })
                     @Html.ValidationMessageFor(Model => Model.visitor_phoneno)
@@ -76,8 +84,7 @@
                         </tr>
 
                         <tr>
-                            <td>
-
+                            <td style="font-size:14px;">
                                 E-mail<span style="color:red;">*</span>:
                             </td>
                             <td>
@@ -88,7 +95,7 @@
                         </tr>
 
                         <tr>
-                            <td>
+                            <td style="font-size:14px;">
                                 Would you like to submit?
                             </td>
                             <td>
@@ -107,10 +114,10 @@
                             <td></td>
                             <td>
                                 <div id="dvTestimonial" style="display:none ">
-                                    @Html.TextAreaFor(model => model.testimonials, new { placeholder = "Submit Your Testimonial here", Style = " height: 74px; width: 421px;" })
+                                    @Html.TextAreaFor(model => model.testimonials, new { placeholder = "Submit Your Testimonial here", rows = "5", cols = "50", Style = " resize: none;" })
                                 </div>
                                 <div id="dvEnquiry" style="display:none;">
-                                    @Html.TextAreaFor(model => model.enquiry, new { placeholder = "Submit Your Enquiry Here", Style = "height: 74px; width: 421px;" })
+                                    @Html.TextAreaFor(model => model.enquiry, new { placeholder = "Submit Your Enquiry Here", rows = "5", cols = "50", Style = "resize: none" })
                                 </div>
                             </td>
                         </tr>   

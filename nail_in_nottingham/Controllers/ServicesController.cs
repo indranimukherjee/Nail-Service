@@ -18,14 +18,12 @@ namespace nail_in_nottingham.Controllers
         public ActionResult Index()
         {
             NailModel db = new NailModel();
-   //  List<ServiceMaster> serviceList = new List<ServiceMaster>();
-   //serviceList.Add( new ServiceMaster { ServiceType = "Paraffin Hand Treatment", ServiceDesc= "Paraffin treatment" });
-   //serviceList.Add(new ServiceMaster { ServiceType = "Paraffin Foot Treatment", ServiceDesc = "Paraffin treatment" });
 
-            ServiceBillDesk serviceDetails = new ServiceBillDesk();
-           
-            
-           //var ser=db.ServiceBillDesks.Where(x => x.ServiceMaster.ParentServiceId>0).GroupBy(s => s.ServiceID).ToList();
+            List<ServiceBillDesk> serviceDetails = db.ServiceBillDesks.ToList();
+            //ServiceBillDesk serviceDetails = new ServiceBillDesk();
+            //List<ServiceMaster> serviceList = db.ServiceMasters.ToList();
+
+            //var ser=db.ServiceBillDesks.Where(x => x.ServiceMaster.ParentServiceId>0).GroupBy(s => s.ServiceID).ToList();
 
             return View(serviceDetails);
         }
