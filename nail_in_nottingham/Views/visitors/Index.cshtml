@@ -5,17 +5,43 @@
 
 }
 
+ @*@if(null!= TempData["AlertMessage"])
+   {
+    <script type="text/javascript">
+       alert("@TempData["AlertMessage"]");
+    </script>
+   }*@
+
+    @if(ViewBag.ResultMessage != null)
+    {
+    <script>
+
+        $(document).ready(function(){
+
+            alert('@ViewBag.ResultMessage');
+            document.getElementById('name').value = '';
+            document.getElementById('location').value = '';
+            document.getElementById('Phoneno').value = '';
+            document.getElementById('Email').value = '';
+            document.getElementById('testimonial').value = '';
+            document.getElementById('Enquiry').value = '';
+
+            return false;
+
+   });
+
+
+
+    </script>
+
+  }
+
 @using (Html.BeginForm("Index", "visitors", FormMethod.Post))
 {
     //this  is for create form tag
     @Html.AntiForgeryToken()          // this is for prevent CSRF attack
-                                    @Html.ValidationSummary(true)
-    if (@ViewBag.Message != null)
-    {
-        <div style="border:1px solid red">
-            @ViewBag.Message
-        </div>
-    }
+    @Html.ValidationSummary(true)
+  
 
     <div class="contact_page">
         <div class="address">
@@ -55,7 +81,7 @@
                                 Your Name<span style="color:red;">*</span>:
                             </td>
                             <td>
-                                @Html.TextBoxFor(Model => Model.visitor_name, new { @style = "", @placeholder = "Provide Your Name" })
+                                @Html.TextBoxFor(Model => Model.visitor_name, new { @style = "", @placeholder = "Provide Your Name", @id="name" })
                                 @Html.ValidationMessageFor(Model => Model.visitor_name)
                             </td>
                         </tr>
@@ -63,10 +89,10 @@
                         <tr>
                             <td style="font-size:14px;">
                                 Location:
-                                @*Location<span style="color:red;">*</span>:*@
+                                Location<span style="color:red;">*</span>:
                             </td>
                             <td>
-                                @Html.TextBoxFor(Model => Model.visitor_location, new { @style = "" , @placeholder = "Provide Your Location" })
+                                @Html.TextBoxFor(Model => Model.visitor_location, new { @style = "" , @placeholder = "Provide Your Location", @id = "location" })
 
                                 @Html.ValidationMessageFor(Model => Model.visitor_location)
                             </td>
@@ -77,7 +103,7 @@
                             <td style="font-size:14px;">
                            Phone Number<span style="color:red;">*</span>:</td>
                             <td>
-                                @Html.TextBoxFor(Model => Model.visitor_phoneno, new { @style = "", @placeholder = "Provide Your ContactNo" })
+                                @Html.TextBoxFor(Model => Model.visitor_phoneno, new { @style = "", @placeholder = "Provide Your ContactNo", @id = "Phoneno" })
                     @Html.ValidationMessageFor(Model => Model.visitor_phoneno)
 
                             </td>
@@ -88,7 +114,7 @@
                                 E-mail<span style="color:red;">*</span>:
                             </td>
                             <td>
-                                @Html.TextBoxFor(Model => Model.visitor_email, new { @style = "", @placeholder = "Provide Your Email" })
+                                @Html.TextBoxFor(Model => Model.visitor_email, new { @style = "", @placeholder = "Provide Your Email", @id = "Email" })
                       @Html.ValidationMessageFor(Model => Model.visitor_email)
 
                             </td>
@@ -114,10 +140,10 @@
                             <td></td>
                             <td>
                                 <div id="dvTestimonial" style="display:none ">
-                                    @Html.TextAreaFor(model => model.testimonials, new { placeholder = "Submit Your Testimonial here", rows = "5", cols = "50", Style = " resize: none;" })
+                                    @Html.TextAreaFor(model => model.testimonials, new { placeholder = "Submit Your Testimonial here", rows = "5", cols = "50", Style = " resize: none;", @id = "testimonial" })
                                 </div>
                                 <div id="dvEnquiry" style="display:none;">
-                                    @Html.TextAreaFor(model => model.enquiry, new { placeholder = "Submit Your Enquiry Here", rows = "5", cols = "50", Style = "resize: none" })
+                                    @Html.TextAreaFor(model => model.enquiry, new { placeholder = "Submit Your Enquiry Here", rows = "5", cols = "50", Style = "resize: none", @id = "Enquiry" })
                                 </div>
                             </td>
                         </tr>   
@@ -148,10 +174,13 @@
                                         if (value == '1') {
                                             $('#dvTestimonial').css('display', 'block');
                                             $('#dvEnquiry').css('display', 'none');
+                                            $('#Enquiry').val('');
                                         }
                                         else {
                                             $('#dvEnquiry').css('display', 'block');
                                             $('#dvTestimonial').css('display', 'none');
+                                            $('#testimonial').val('');
+                                            //document.getElementById('testimonial').value = '';
                                         }
                                     }
 

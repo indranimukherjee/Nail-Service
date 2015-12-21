@@ -16,6 +16,7 @@ namespace nail_in_nottingham.Controllers
 
         public ActionResult Index()
         {
+          //TempData["AlertMessage"] = "Your Enquiry Submitted Successfully";
             return View();
         }
 
@@ -41,9 +42,18 @@ namespace nail_in_nottingham.Controllers
                 int i = db.SaveChanges();
                 if (i > 0)
                 {
-                    ViewBag.ResultMessage = "data Saved Successfully";
+                    if(visitors.testimonials != null)
+                    {
+                        @ViewBag.ResultMessage = "Your Testimonial Submitted Successfully";
+                    }
+                    else
+                    {
+                        @ViewBag.ResultMessage = "Your Enquiry Submitted Successfully";
+
+                    }
                 }
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+
             }
             return View(visitors);
         }

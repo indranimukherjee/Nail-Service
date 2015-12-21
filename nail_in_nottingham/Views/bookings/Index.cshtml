@@ -35,7 +35,7 @@
 <script type="text/javascript">
     var counter = 0;
     var SelectedItems = "";
-    var BillDeskId = ["0","0"];
+    var BillDeskId = 0;
     var varition = "";
     var timeDuration = "";
     var price = "";
@@ -62,7 +62,7 @@
                     if (BillDeskId > 0 ) {
                         if(!(SelectedItems.match("'" + BillDeskId + "'")))
                         {
-                            SelectedItems = SelectedItems + " '" + BillDeskId + "'";
+                            SelectedItems = SelectedItems + "'" + BillDeskId + "'";
                             counter++;
 
                             $("#dvBillDesk").css("display", "block");
@@ -189,7 +189,7 @@
 
     </div>
 
-                        }
+ }
 
 <div id="dvBookingPage">
     @* ServiceList *@
@@ -206,18 +206,37 @@
     <div id="dvBillDeskItems" class="float_l">
         <h3>Bill Desk</h3>
         <div style="margin-right:1%">
-            <table id="tbBillDesk" border="1" width="100%">
-                <tr>
-                    <th style=""></th>
-                    <th width="40%">Service Name</th>
-                    <th width="20%">Service Type</th>
-                    <th>Time Duration</th>
-                    <th width="10%">Price</th>
-                    <th>No. Of Person</th>
-                    <th style="display:none"></th>
-                </tr>
+            <form action="Bookings" method="post">
+                <table id="tbBillDesk" border="1" width="100%">
+                    <tr>
+                        <th style=""></th>
+                        <th width="40%">Service Name</th>
+                        <th width="20%">Service Type</th>
+                        <th>Time Duration</th>
+                        <th width="10%">Price</th>
+                        <th>No. Of Person</th>
+                        <th style="display:none"></th>
+                    </tr>
 
-                @if (Model.SelectedItem != null)
+                    @if (ViewBag.IsItems == true)
+                    {
+
+                        <tr>
+                            <td><img width="20px" height="20px" src="../Content/mytemplate/images/remove.png" onclick="RemoveRow(this)" /></td>
+                            <td>
+                                @Html.LabelFor(model => model.SelectedItem[0].ServiceName, Model.SelectedItem[0].ServiceName)
+
+                            </td>
+                            <td>@Model.SelectedItem[0].serviceVeriation</td>
+                            <td>@Model.SelectedItem[0].timeDuration</td>
+                            <td>@Model.SelectedItem[0].price</td>
+                            <td> <input type="number" value=@Model.SelectedItem[0].NoOfPerson min="1" max="10" id="SQuantity" /></td>
+                            <td style="display:none">@Model.SelectedItem[0].ServiceBillDeskId</td>
+                        </tr>
+
+                    }
+
+                    @*@if (Model.SelectedItem != null)
             {
                 foreach (var item in Model.SelectedItem)
                 {
@@ -235,10 +254,13 @@
 
                     }
 
-                }
+                }*@
 
 
-            </table>
+                </table>
+                <input value="Submit" type="submit" />
+            </form>
+            
         </div>
 
         <br />
