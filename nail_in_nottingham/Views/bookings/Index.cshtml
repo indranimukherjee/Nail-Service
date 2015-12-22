@@ -19,23 +19,236 @@
 
 
 <link href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" rel="stylesheet" />
+<link rel="stylesheet" media="all" type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<link href="~/Content/mytemplate/css/jquery-ui-timepicker-addon.css" rel="stylesheet" />
+
+
+
+
+@foreach (var item in serviceDetailsList)
+{
+
+    var divName = item.T2.ToList()[0].ServiceMaster.ServiceType.Replace(" ", "");
+    <div id=@divName style="display:none">
+
+        <table>
+            <tr>
+                <td align="left" style="padding-right:40px">
+                    @{ string ImgPath = "../Content/mytemplate/images/ServiceImages/" + divName + ".jpg";}
+
+                    <img src=@ImgPath height="190" width="344" alt="icon">
+                </td>
+                <td align="right">
+                    <table border="1" style="text-align:center;border-collapse:collapse" width="100%">
+
+                        <tr align="center">
+                            <th width="40%">Services Type</th>
+                            <th width="40%">Time Duration</th>
+                            <th>Price</th>
+                            <th>Booking</th>
+                        </tr>
+                        @for (int i = 0; i < @item.T2.ToList().Count(); i++)
+                        {
+                            var serviceVariation = item.T2.ToList()[i].ServiceVeriation.ServiceVariation.ToString();
+                            var serviceDuration = item.T2.ToList()[i].ServiceDuration.ToString();
+                            var servicePrice = item.T2.ToList()[i].ServicePrice.ToString();
+                            <tr>
+                                <td>@serviceVariation</td>
+                                <td style="height:30px;width:50px;">@serviceDuration</td>
+                                <td>@servicePrice</td>
+                                <td>
+
+                                    @Html.RadioButton("rdBooking", item.T2.ToList()[i].ID, new { onclick = String.Format("SetValue('{0}', '{1}','{2}')", serviceVariation, serviceDuration, servicePrice) })
+                                </td>
+                            </tr>
+
+                        }
+                    </table>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+
+                        }
+
+<div id="dvDateTime">
+
+</div>
+
+<div id="dvBookingPage">
+    @* ServiceList *@
+    <div id="dvServiceList" class="float_l">
+        <h2>ALL SERVICES</h2>
+        @foreach (var item in serviceDetailsList)
+        {
+            <a href="javascript:void(0)" id="btn_click" onclick="ShowModal('@item.T2.ToList()[0].ServiceMaster.ServiceType.Replace(" "," ").ToString()','@item.T1.ToString()')">  @item.T2.ToList()[0].ServiceMaster.ServiceType.ToString() </a>
+                                        <br />
+                                        <br />
+        }
+    </div>
+    @* BillDeskItemList *@
+    <div id="dvBillDeskItems" class="float_l">
+        <h3>Bill Desk</h3>
+        <div style="margin-right:1%">
+
+            <table id="tbBillDesk" border="1" width="100%">
+                <tr>
+                    <th style=""></th>
+                    <th width="40%">Service Name</th>
+                    <th width="20%">Service Type</th>
+                    <th>Time Duration</th>
+                    <th width="10%">Price</th>
+                    <th>No. Of Person</th>
+                    <th style="display:none"></th>
+                </tr>
+
+                @if (ViewBag.IsItems == true)
+                {
+
+                    <tr>
+                        <td><img width="20px" height="20px" src="../Content/mytemplate/images/remove.png" onclick="RemoveRow(this)" /></td>
+                        <td>
+                            @Html.LabelFor(model => model.SelectedItem[0].ServiceName, Model.SelectedItem[0].ServiceName)
+                            @Html.HiddenFor(model => model.SelectedItem[0].ServiceName)
+                        </td>
+                        <td>
+                            @Html.LabelFor(model => model.SelectedItem[0].serviceVeriation, Model.SelectedItem[0].serviceVeriation)
+                        @Html.HiddenFor(model => model.SelectedItem[0].serviceVeriation)
+                    </td>
+                    <td>
+                        @Html.LabelFor(model => model.SelectedItem[0].timeDuration, Model.SelectedItem[0].timeDuration)
+                    @Html.HiddenFor(model => model.SelectedItem[0].timeDuration)
+                </td>
+                <td>
+                    @Html.LabelFor(model => model.SelectedItem[0].price, Model.SelectedItem[0].price)
+                @Html.HiddenFor(model => model.SelectedItem[0].price)
+            </td>
+            <td><input type="number" value=@Model.SelectedItem[0].NoOfPerson min="1" max="10" id="SQuantity" /></td>
+            <td style="display:none">@Model.SelectedItem[0].ServiceBillDeskId</td>
+        </tr>
+
+                }
+            </table>
+
+
+        </div>
+
+        <br />
+        <a href="#" class="btn btn-default" id="booking-toggle">Check Out</a>
+    </div>
+
+    <div id="dvBookingDetails" class="float_r col_last">
+        <div style="padding-left:2%">
+
+            <table>
+                <tr>
+                    <td>
+                        First Name:
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" id="FName" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Last Name:
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" id="LName" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Mobile Number:
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" id="MobNo" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>E-mail:</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input id="Email" type="text" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Booking Date:
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                        <input type="text" id="BookingDate" />
+
+                        <input type="hidden" value="" id="EDateTime" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Total Amount:
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="text" id="TAmount" /></td>
+                </tr>
+                <tr>
+                    <td>
+                        Total Quantity:
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="text" id="TQuantity" /></td>
+                </tr>
+
+
+            </table>
+
+
+        </div>
+    </div>
+
+    @* Booking Details *@
+    <a href="#" class="back-to-top"><span style="color:white">BACK TO TOP</span></a>
+
+</div>
+
+
+
+
+
+
+
+<table style="width: 100%;">
+    <tr>
+        <td>
+
+            <input value="submit" type="submit" onclick="PostData()" />
+        </td>
+    </tr>
+</table>
 
 <script src="~/Content/mytemplate/js/bootstrap.min.js"></script>
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="~/Content/mytemplate/js/jquery-ui.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore.js"></script>
-<link href="~/Content/mytemplate/css/DateTimePicker.css" rel="stylesheet" />
-<link href="~/Content/mytemplate/css/DateTimePicker-ltie9.css" rel="stylesheet" />
-<script src="~/Content/mytemplate/js/DateTimePicker-Zepto.js"></script>
-<script src="~/Content/mytemplate/js/DateTimePicker-ltie9.js"></script>
-<script src="~/Content/mytemplate/js/DateTimePicker.js"></script>
 
-
+<script src="~/Content/mytemplate/js/jquery-ui-timepicker-addon.js"></script>
+<script src="~/Content/mytemplate/js/jquery-ui-sliderAccess.js"></script>
 
 <script type="text/javascript">
     var counter = 0;
     var SelectedItems = "";
-    var BillDeskId = 0;
+    var BillDeskId = ["0", "0"];
     var varition = "";
     var timeDuration = "";
     var price = "";
@@ -59,15 +272,16 @@
             },
             buttons: {
                 "Add To BiilDesk": function () {
-                    if (BillDeskId > 0 ) {
-                        if(!(SelectedItems.match("'" + BillDeskId + "'")))
-                        {
+                    if (BillDeskId > 0) {
+
+                        if (!(SelectedItems.match("'" + BillDeskId + "'"))) {
                             SelectedItems = SelectedItems + "'" + BillDeskId + "'";
                             counter++;
 
                             $("#dvBillDesk").css("display", "block");
                             // $("#dvBillDesk").append('<div class="services"   >Hi </div>');
                             //add a row in billDesk
+
                             $('#tbBillDesk tr:last').after('<tr id="trNew' + counter + '"> <td> <img width="20px" height="20px" src="../Content/mytemplate/images/remove.png" onclick="RemoveRow(this,' + BillDeskId + ')" /> </td> <td>' + serviceName + '</td> <td>' + varition + '</td> <td>' + timeDuration + '</td> <td>' + price + '</td> <td><input type="number" value="1"  min="1" max="10" id="SQuantity' + BillDeskId + '" /></td> <td style="display:none"> ' + BillDeskId + '  </td></tr>');
                             $(this).dialog("close");
                             //showCheckOut Button
@@ -86,7 +300,7 @@
                     else {
                         alert("Please Select serviceType");
                     }
-                        
+
                 }
             },
             title: serviceName
@@ -117,6 +331,51 @@
 
     $(document).ready(function () {
 
+        /*
+  jQuery Document ready
+*/
+        $(function () {
+            $('#BookingDate').datetimepicker(
+            {
+                orientation: 'auto top',
+                /*
+                    timeFormat
+                    Default: "HH:mm",
+                    A Localization Setting - String of format tokens to be replaced with the time.
+                */
+                timeFormat: "hh:mm tt",
+                /*
+                    hourMin
+                    Default: 0,
+                    The minimum hour allowed for all dates.
+                */
+                hourMin: 9,
+                /*
+                    hourMax
+                    Default: 23,
+                    The maximum hour allowed for all dates.
+                */
+                hourMax: 20,
+
+                /*
+                    minDate
+                    jQuery datepicker option
+                    which set today date as minimum date
+                */
+                minDate: 0,
+                /*
+                    maxDate
+                    jQuery datepicker option
+                    which set 30 days later date as maximum date
+                */
+                maxDate: 120
+            });
+
+            /*
+                below code just enable time picker.
+            */
+            // $('#basic_example_2').timepicker();
+        });
         $("#booking-toggle").click(function () {
 
             // Set the effect type
@@ -128,225 +387,40 @@
             $('#dvBookingDetails').toggle(effect, { direction: "right" }, duration);
         });
 
-
-       
-
-
     });
 
+    function PostData() {
 
-
-    function BookingDateTime() {
-        $('#test').DateTimePicker();
+        var BookingDetails = {
+            ID:"",
+            consumer_first_name: $('#FName').val(),
+            consumer_last_name: $('#LName').val(),
+            consumer__mobileno: $('#MobNo').val(),
+            consumer_email: $('#Email').val(),
+            booking_start_datetime: $('#BookingDate').val(),
+            booking_end_datetime: $('#BookingDate').val(),
+            TotalAmount: $('#TAmount').val(),
+            TotalQuantity: $('#TQuantity').val()
+        };
+        /*POST*/
+        $.ajax({
+            url: '/Bookings/Submit',
+            dataType: "json",
+            type: "POST",
+            contentType: 'application/json; charset=utf-8',
+            data:JSON.stringify(BookingDetails),
+            async: true,
+            processData: false,
+            cache: false,
+            success: function (data) {
+                alert(data);
+            },
+            error: function (xhr) {
+                alert('error');
+            }
+        })
     }
-     
+
+
 </script>
-
-
-@foreach (var item in serviceDetailsList)
-{
-
-    var divName = item.T2.ToList()[0].ServiceMaster.ServiceType.Replace(" ", "");
-    <div id=@divName style="display:none">
-
-        <table>
-            <tr>
-                <td align="left" style="padding-right:40px">
-                    @{ string ImgPath = "../Content/mytemplate/images/ServiceImages/" + divName + ".jpg";}
-
-                    <img src=@ImgPath height="190" width="344" alt="icon">
-                </td>
-                <td align="right">
-                    <table border="1" style="text-align:center;border-collapse:collapse" width="100%">
-
-                        <tr align="center">
-                            <th width="40%">Services Type</th>
-                            <th width="40%">Time Duration</th>
-                            <th>Price</th>
-                            <th>Booking</th>
-                        </tr>
-                        @for (int i = 0; i < @item.T2.ToList().Count(); i++)
-                        {
-                            var serviceVariation = item.T2.ToList()[i].ServiceVeriation.ServiceVariation.ToString();
-                            var serviceDuration = item.T2.ToList()[i].ServiceDuration.ToString();
-                            var servicePrice = item.T2.ToList()[i].ServicePrice.ToString();
-                            //@item.T2.ToList()[i].ServiceVeriation.ServiceVariation.ToString()
-                            <tr>
-                                <td>@serviceVariation</td>
-                                <td style="height:30px;width:50px;">@serviceDuration</td>
-                                <td>@servicePrice</td>
-                                <td>
-                                    @*@Html.ActionLink("BOOKING", "Index", "bookings", new { @SBId = item.T2.ToList()[i].ID }, null)*@
-                                    @Html.RadioButton("rdBooking", item.T2.ToList()[i].ID, new { onclick = String.Format("SetValue('{0}', '{1}','{2}')", serviceVariation, serviceDuration, servicePrice) })
-                                </td>
-                            </tr>
-
-                        }
-                    </table>
-                </td>
-            </tr>
-        </table>
-
-    </div>
-
- }
-
-<div id="dvBookingPage">
-    @* ServiceList *@
-    <div id="dvServiceList" class="float_l">
-        <h2>ALL SERVICES</h2>
-        @foreach (var item in serviceDetailsList)
-        {
-            <a href="javascript:void(0)" id="btn_click" onclick="ShowModal('@item.T2.ToList()[0].ServiceMaster.ServiceType.Replace(" "," ").ToString()','@item.T1.ToString()')">  @item.T2.ToList()[0].ServiceMaster.ServiceType.ToString() </a>
-            <br />
-                    <br />
-        }
-    </div>
-    @* BillDeskItemList *@
-    <div id="dvBillDeskItems" class="float_l">
-        <h3>Bill Desk</h3>
-        <div style="margin-right:1%">
-            <form action="Bookings" method="post">
-                <table id="tbBillDesk" border="1" width="100%">
-                    <tr>
-                        <th style=""></th>
-                        <th width="40%">Service Name</th>
-                        <th width="20%">Service Type</th>
-                        <th>Time Duration</th>
-                        <th width="10%">Price</th>
-                        <th>No. Of Person</th>
-                        <th style="display:none"></th>
-                    </tr>
-
-                    @if (ViewBag.IsItems == true)
-                    {
-
-                        <tr>
-                            <td><img width="20px" height="20px" src="../Content/mytemplate/images/remove.png" onclick="RemoveRow(this)" /></td>
-                            <td>
-                                @Html.LabelFor(model => model.SelectedItem[0].ServiceName, Model.SelectedItem[0].ServiceName)
-
-                            </td>
-                            <td>@Model.SelectedItem[0].serviceVeriation</td>
-                            <td>@Model.SelectedItem[0].timeDuration</td>
-                            <td>@Model.SelectedItem[0].price</td>
-                            <td> <input type="number" value=@Model.SelectedItem[0].NoOfPerson min="1" max="10" id="SQuantity" /></td>
-                            <td style="display:none">@Model.SelectedItem[0].ServiceBillDeskId</td>
-                        </tr>
-
-                    }
-
-                    @*@if (Model.SelectedItem != null)
-            {
-                foreach (var item in Model.SelectedItem)
-                {
-                        <tr>
-                            <td><img width="20px" height="20px" src="../Content/mytemplate/images/remove.png" onclick="RemoveRow(this)" /></td>
-                            <td>@item.ServiceName</td>
-                            <td>@item.serviceVeriation</td>
-                            <td>@item.timeDuration</td>
-                            <td>@item.price</td>
-                            <td> <input type="number" value=@item.NoOfPerson min="1" max="10" id="SQuantity" /></td>
-                            <td style="display:none">@item.ServiceBillDeskId</td>
-
-
-                        </tr>
-
-                    }
-
-                }*@
-
-
-                </table>
-                <input value="Submit" type="submit" />
-            </form>
-            
-        </div>
-
-        <br />
-        <a href="#" class="btn btn-default" id="booking-toggle">Check Out</a>
-    </div>
-
-    <div id="dvBookingDetails" class="float_r col_last">
-        <div style="padding-left:2%">
-            <table>
-                <tr>
-                    <td>
-                        First Name:
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        @Html.EditorFor(model => model.bookingServices.consumer_first_name)
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Last Name:
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        @Html.EditorFor(model => model.bookingServices.consumer_last_name)
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Mobile Number:
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        @Html.EditorFor(model => model.bookingServices.consumer__mobileno)
-                    </td>
-                </tr>
-                <tr>
-                    <td>E-mail:</td>
-                </tr>
-                <tr>
-                    <td>@Html.EditorFor(model => model.bookingServices.consumer_email)</td>
-                </tr>
-                <tr>
-                    <td>
-                        Booking Date:
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                      
-                        <input type="text" data-field="datetime" value="@Model.bookingServices.booking_start_datetime" onclick="BookingDateTime()" /><div id="test"></div>
-                        @*<div id="BookingDateTime"></div>*@
-                        <input type="hidden" value="@Model.bookingServices.booking_end_datetime" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Total Amount:
-                    </td>
-                </tr>
-                <tr>
-                    <td><input type="text" value="@Model.bookingServices.TotalAmount"/></td>
-                </tr>
-                <tr>
-                    <td>
-                        Total Quantity:
-                    </td>
-                </tr>
-                <tr>
-                    <td><input type="text" value="@Model.bookingServices.TotalQuantity"/></td>
-                </tr>
-                
-
-            </table>
-        </div>
-    </div>
-
-    @* Booking Details *@
-    <a href="#" class="back-to-top"><span style="color:white">BACK TO TOP</span></a>
-
-</div>
-
-
-<table style="width: 100%;"></table>
-
 

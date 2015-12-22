@@ -1352,3 +1352,56 @@ fieldset[disabled] .btn-default.focus {
   color: #fff;
   background-color: #333;
 }
+
+.left_page{
+    float:left;
+    border-color:hotpink;
+    border-right: 1px solid;
+    border-right-color:hotpink;
+    border-bottom: 1px solid;
+    border-bottom-color:hotpink;
+    border-top: 1px solid;
+    border-top-color:hotpink;
+    border-left: 1px solid;
+    border-left-color:hotpink;
+    width: 33%;
+    height:auto;
+    text-align:center;
+}
+.center_page{
+    float:left;
+    width:33%;
+    height:auto;
+    border-color:hotpink;
+    border-right: 1px solid;
+    border-right-color:hotpink;
+    border-bottom: 1px solid;
+    border-bottom-color:hotpink;
+    border-top: 1px solid;
+    border-top-color:hotpink;
+    border-left: 1px solid;
+    border-left-color:hotpink;
+    text-align:center;
+    margin-left:0.3%;
+}
+.right_page{
+    float:right;
+    width:33%;
+    height:auto;
+    border-color:hotpink;
+    border-right: 1px solid;
+    border-right-color:hotpink;
+    border-bottom: 1px solid;
+    border-bottom-color:hotpink;
+    border-top: 1px solid;
+    border-top-color:hotpink;
+    border-left: 1px solid;
+    border-left-color:hotpink;
+    text-align:center;
+}
+.para{
+    text-align:justify;
+    width:90%;
+    height:auto;
+    color:hotpink;
+}

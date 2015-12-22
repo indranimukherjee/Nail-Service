@@ -194,6 +194,5 @@ D:\indrani\indrani_proj\Nail_Progress\21st\nail_in_nottingham\nail_in_nottingham
 D:\indrani\indrani_proj\Nail_Progress\21st\nail_in_nottingham\nail_in_nottingham\bin\System.Web.WebPages.xml
 D:\indrani\indrani_proj\Nail_Progress\21st\nail_in_nottingham\nail_in_nottingham\bin\System.Web.WebPages.Deployment.xml
 D:\indrani\indrani_proj\Nail_Progress\21st\nail_in_nottingham\nail_in_nottingham\bin\System.Web.WebPages.Razor.xml
-D:\indrani\indrani_proj\Nail_Progress\21st\nail_in_nottingham\nail_in_nottingham\obj\Debug\nail_in_nottingham.csprojResolveAssemblyReference.cache
 D:\indrani\indrani_proj\Nail_Progress\21st\nail_in_nottingham\nail_in_nottingham\obj\Debug\nail_in_nottingham.dll
 D:\indrani\indrani_proj\Nail_Progress\21st\nail_in_nottingham\nail_in_nottingham\obj\Debug\nail_in_nottingham.pdb
