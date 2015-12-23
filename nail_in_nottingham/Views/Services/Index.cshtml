@@ -126,7 +126,7 @@
                                     a difference in how your hands and nails look and feel.
                                    </p>
                         break;
-                    case "Manicure(Basic)":
+                    case "ManicureBasic":
                         <p> Being good to your hands and nails is about having good daily habits and
                                     choosing the right products to use on them. A few small changes could make
                                     a difference in how your hands and nails look and feel.
@@ -218,8 +218,8 @@
                         <td>
                             Content
                         </td>
-                        <td style="height:30px;width:50px;">@item.T2.ToList()[i].ServiceDuration.ToString()</td>
-                        <td>@item.T2.ToList()[i].ServicePrice.ToString()</td>
+                        <td style="height:30px;width:50px;">@item.T2.ToList()[i].ServiceDuration.ToString()mins</td>
+                        <td>£@item.T2.ToList()[i].ServicePrice.ToString()</td>
                         <td>
                             @Html.ActionLink("BOOKING", "Index", "bookings", new { @SBId = item.T2.ToList()[i].ID }, null)
                         </td>

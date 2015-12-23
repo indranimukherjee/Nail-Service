@@ -93,6 +93,16 @@
 			});
     </script>
     <link rel="icon" type="image/ico" href="~/Content/mytemplate/Images/favicon.ico">
+
+
+    <title>jQuery UI Datepicker - Default functionality</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <link rel="stylesheet" href="/resources/demos/style.css">
+  
+
+
 </head>
 <body>
     <div class="templatemo-top-bar" id="templatemo-top" style="height:85px">
@@ -182,7 +192,7 @@
                                     <li class="dropdown-submenu">
                                         <a href="#">Manicure</a>
                                         <ul class="dropdown-menu">
-                                            <li>@Html.ActionLink("Basic Manicure", "Index", "Services", new { onclick = "return ServiceFocus('Manicure(Basic)')" })</li>
+                                            <li>@Html.ActionLink("Basic Manicure", "Index", "Services", new { onclick = "return ServiceFocus('ManicureBasic')" })</li>
                                             <li>@Html.ActionLink("French Manicure", "Index", "Services", new { onclick = "return ServiceFocus('FrenchManicure')" })</li>
                                             <li>@Html.ActionLink("Reverse French Manicure", "Index", "Services", new { onclick = "return ServiceFocus('ReverseFrenchManicure')" })</li>
                                             <li>@Html.ActionLink("American Manicure", "Index", "Services", new { onclick = "return ServiceFocus('AmericanManicure')" })</li>

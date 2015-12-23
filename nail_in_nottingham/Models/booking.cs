@@ -33,9 +33,9 @@ namespace nail_in_nottingham.Models
         [StringLength(50)]
         public string consumer_email { get; set; }
 
-        [Column(TypeName = "date")]
+        [StringLength(50)]
 
-        public DateTime booking_start_datetime { get; set; }
+        public string booking_start_datetime { get; set; }
 
         public DateTime booking_end_datetime { get; set; }
 

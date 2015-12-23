@@ -54,8 +54,8 @@
                             var servicePrice = item.T2.ToList()[i].ServicePrice.ToString();
                             <tr>
                                 <td>@serviceVariation</td>
-                                <td style="height:30px;width:50px;">@serviceDuration</td>
-                                <td>@servicePrice</td>
+                                <td style="height:30px;width:50px;">@serviceDuration mins</td>
+                                <td>£@servicePrice</td>
                                 <td>
 
                                     @Html.RadioButton("rdBooking", item.T2.ToList()[i].ID, new { onclick = String.Format("SetValue('{0}', '{1}','{2}')", serviceVariation, serviceDuration, servicePrice) })
@@ -82,7 +82,7 @@
         <h2>ALL SERVICES</h2>
         @foreach (var item in serviceDetailsList)
         {
-            <a href="javascript:void(0)" id="btn_click" onclick="ShowModal('@item.T2.ToList()[0].ServiceMaster.ServiceType.Replace(" "," ").ToString()','@item.T1.ToString()')">  @item.T2.ToList()[0].ServiceMaster.ServiceType.ToString() </a>
+            <a href="javascript:void(0)" id="btn_click" onclick="ShowModal('@item.T2.ToList()[0].ServiceMaster.ServiceType.Replace(" ","").ToString()','@item.T1.ToString()')">  @item.T2.ToList()[0].ServiceMaster.ServiceType.ToString() </a>
                                         <br />
                                         <br />
         }
@@ -109,20 +109,18 @@
                     <tr>
                         <td><img width="20px" height="20px" src="../Content/mytemplate/images/remove.png" onclick="RemoveRow(this)" /></td>
                         <td>
-                            @Html.LabelFor(model => model.SelectedItem[0].ServiceName, Model.SelectedItem[0].ServiceName)
-                            @Html.HiddenFor(model => model.SelectedItem[0].ServiceName)
+                           @Model.SelectedItem[0].ServiceName
                         </td>
                         <td>
-                            @Html.LabelFor(model => model.SelectedItem[0].serviceVeriation, Model.SelectedItem[0].serviceVeriation)
-                        @Html.HiddenFor(model => model.SelectedItem[0].serviceVeriation)
-                    </td>
+                           @Model.SelectedItem[0].serviceVeriation                
+                          </td>
                     <td>
-                        @Html.LabelFor(model => model.SelectedItem[0].timeDuration, Model.SelectedItem[0].timeDuration)
-                    @Html.HiddenFor(model => model.SelectedItem[0].timeDuration)
+                       
+                        @Model.SelectedItem[0].timeDuration
+                      @Html.Label("mins",new {id="mins"})
                 </td>
                 <td>
-                    @Html.LabelFor(model => model.SelectedItem[0].price, Model.SelectedItem[0].price)
-                @Html.HiddenFor(model => model.SelectedItem[0].price)
+                    £ @Model.SelectedItem[0].price
             </td>
             <td><input type="number" value=@Model.SelectedItem[0].NoOfPerson min="1" max="10" id="SQuantity" /></td>
             <td style="display:none">@Model.SelectedItem[0].ServiceBillDeskId</td>
@@ -135,7 +133,7 @@
         </div>
 
         <br />
-        <a href="#" class="btn btn-default" id="booking-toggle">Check Out</a>
+        <a href="#" class="btn btn-default" id="booking-toggle" onclick="ShowBookingDetails()">Check Out</a>
     </div>
 
     <div id="dvBookingDetails" class="float_r col_last">
@@ -203,7 +201,7 @@
                 </tr>
                 <tr>
                     <td>
-                        Total Quantity:
+                        Total Number Of Persons:
                     </td>
                 </tr>
                 <tr>
@@ -248,7 +246,7 @@
 <script type="text/javascript">
     var counter = 0;
     var SelectedItems = "";
-    var BillDeskId = ["0", "0"];
+    var BillDeskId = 0;
     var varition = "";
     var timeDuration = "";
     var price = "";
@@ -275,14 +273,14 @@
                     if (BillDeskId > 0) {
 
                         if (!(SelectedItems.match("'" + BillDeskId + "'"))) {
-                            SelectedItems = SelectedItems + "'" + BillDeskId + "'";
+                            SelectedItems = SelectedItems + " '" + BillDeskId + "'";
                             counter++;
 
                             $("#dvBillDesk").css("display", "block");
                             // $("#dvBillDesk").append('<div class="services"   >Hi </div>');
                             //add a row in billDesk
 
-                            $('#tbBillDesk tr:last').after('<tr id="trNew' + counter + '"> <td> <img width="20px" height="20px" src="../Content/mytemplate/images/remove.png" onclick="RemoveRow(this,' + BillDeskId + ')" /> </td> <td>' + serviceName + '</td> <td>' + varition + '</td> <td>' + timeDuration + '</td> <td>' + price + '</td> <td><input type="number" value="1"  min="1" max="10" id="SQuantity' + BillDeskId + '" /></td> <td style="display:none"> ' + BillDeskId + '  </td></tr>');
+                            $('#tbBillDesk tr:last').after('<tr id="trNew' + counter + '"> <td> <img width="20px" height="20px" src="../Content/mytemplate/images/remove.png" onclick="RemoveRow(this,' + BillDeskId + ')" /> </td> <td>' + serviceName + '</td><td>' + varition + '</td> <td>' + timeDuration + ' mins</td> <td>£' + price + '</td> <td><input type="number" value="1" onchange="checkInput("SQuantity' + BillDeskId + '")" min="1" max="10" id="SQuantity' + BillDeskId + '"/></td> <td style="display:none"> ' + BillDeskId + '  </td></tr>');
                             $(this).dialog("close");
                             //showCheckOut Button
                             if ($('#booking-toggle').css('display', 'none')) {
@@ -325,69 +323,40 @@
         if ($('#tbBillDesk tr').length == 1) {
             $('#booking-toggle').css('display', 'none')
         }
-
-
+        alert(document.getElementById("tbBillDesk").rows[0].cells[0].innerHTML);
     }
 
     $(document).ready(function () {
 
-        /*
-  jQuery Document ready
-*/
-        $(function () {
-            $('#BookingDate').datetimepicker(
-            {
-                orientation: 'auto top',
-                /*
-                    timeFormat
-                    Default: "HH:mm",
-                    A Localization Setting - String of format tokens to be replaced with the time.
-                */
-                timeFormat: "hh:mm tt",
-                /*
-                    hourMin
-                    Default: 0,
-                    The minimum hour allowed for all dates.
-                */
-                hourMin: 9,
-                /*
-                    hourMax
-                    Default: 23,
-                    The maximum hour allowed for all dates.
-                */
-                hourMax: 20,
 
-                /*
-                    minDate
-                    jQuery datepicker option
-                    which set today date as minimum date
-                */
-                minDate: 0,
-                /*
-                    maxDate
-                    jQuery datepicker option
-                    which set 30 days later date as maximum date
-                */
-                maxDate: 120
-            });
+        var queryString = location.search;
 
-            /*
-                below code just enable time picker.
-            */
-            // $('#basic_example_2').timepicker();
-        });
-        $("#booking-toggle").click(function () {
 
-            // Set the effect type
-            var effect = 'slide';
 
-            // Set the duration (default: 400 milliseconds)
-            var duration = 500;
+        if (queryString != "") {
+            var item = " '" + queryString.replace("?SBId=", "") + "'"; //We pass item this format '10' '12'
+            SelectedItems = SelectedItems + item;
+            $('#booking-toggle').css('display', 'inline-block');
+        }
 
-            $('#dvBookingDetails').toggle(effect, { direction: "right" }, duration);
-        });
+
+     
+           $("#BookingDate").datepicker({
+               minDate: 0,
+               maxDate: 120
+           });
+        
+
 
     });
+
+    function ShowBookingDetails() {        
+        // Set the effect type
+        var effect = 'slide';
+        // Set the duration (default: 400 milliseconds)
+        var duration = 500;
+        $('#dvBookingDetails').toggle(effect, { direction: "right" }, duration);
+    }
 
     function PostData() {
 
@@ -421,6 +390,9 @@
         })
     }
 
+ 
 
+
+           
 </script>
 

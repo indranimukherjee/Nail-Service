@@ -224,7 +224,7 @@
     <Content Include="Content\mytemplate\images\logo_png_fireworks.png" />
     <Content Include="Content\mytemplate\images\Manicare-Safari-Glue-On-Nails-Leopard-2010.jpg" />
     <Content Include="Content\mytemplate\images\ServiceImages\ManicureAndPedicure.jpg" />
-    <Content Include="Content\mytemplate\images\ServiceImages\Manicure%28Basic%29.jpg" />
+    <Content Include="Content\mytemplate\images\ServiceImages\ManicureBasic.jpg" />
     <Content Include="Content\mytemplate\images\map.png" />
     <Content Include="Content\mytemplate\images\mobile.png" />
     <Content Include="Content\mytemplate\images\mobile1.png" />
